@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        /* Add this style for the cart sidebar */
+        .cart-sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 20px;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        }
+        
+        .cart-sidebar h3 {
+            padding: 0 20px;
+        }
+        
+        .cart-sidebar ul {
+            padding: 0 20px;
+            list-style-type: none;
+        }
+        
+        .cart-sidebar li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-sidebar p {
+            padding: 0 20px;
+            font-size: 18px;
+        }
+        
+        .cart-sidebar button {
+            margin: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+    <h3>Your Cart</h3>
+    <ul id="cartItems">
+        <!-- Cart items will appear here -->
+    </ul>
+    <p id="cartTotal"><strong>Total:</strong> Rs. 0</p>
+    <button onclick="closeCart()">Close</button>
+    <button onclick="checkout()">Checkout</button>
+</div>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="/">👑Senzy</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products...">
+                <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+               <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Electronics</a></li>
+                <li><a href="/">Fashion</a></li>
+                <li><a href="/">Home & Living</a></li>
+                <li><a href="/">Beauty</a></li>
+                <li><a href="/">Groceries</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Big Sale Up To 70% Off!</h1>
+            <p>Shop the best deals on thousands of products</p>
+            <button onclick="addToCart('Wireless Headphones', 4599, 'hp1.jpg')">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="products">
+        <h2>Popular Products</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="hp1.jpg" alt="1st Product">
+                <h3 class="product-title">Wireless Headphones</h3>
+                <p class="price">Rs. 4599<span class="old-price">Rs. 6799</span></p>
+                <div class="button-group">
+                    <button onclick="addToCart('Wireless Headphones', 4599, 'hp1.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="mouse1.jpg" alt="2nd Product">
+                <h3 class="product-title">Gaming Mouse</h3>
+                <p class="price">Rs. 3499<span class="old-price">Rs. 5600</span></p>
+                <div class="button-group">
+                    <button onclick="addToCart('Gaming Mouse', 3499, 'mouse1.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="moniter1.jpg" alt="3rd Product">
+                <h3 class="product-title">Moniter</h3>
+                <p class="price">Rs. 8900<span class="old-price">Rs. 11400</span></p>
+                <div class="button-group">
+                    <button onclick="addToCart('Moniter', 8900, 'moniter1.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="kb1.jpg" alt="4th Product">
+                <h3 class="product-title">Gaming Keyboard</h3>
+                <p class="price">Rs. 4000<span class="old-price">Rs. 5600</span></p>
+                <div class="button-group">
+                    <button onclick="addToCart('Gaming Keyboard', 4000, 'kb1.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="hp2.jpg" alt="5th Product">
+                <h3 class="product-title">Classic Headphones</h3>
+                <p class="price">Rs. 2900<span class="old-price">Rs. 3500 </span></p>
+                <div class="button-group">
+                    <button onclick="addToCart('Classic Headphones', 2900, 'hp2.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="kb2.jpg" alt="6th Product">
+                <h3 class="product-title">Cool Keyboard</h3>
+                <p class="price">Rs. 5700</p>
+                <div class="button-group">
+                    <button onclick="addToCart('Cool Keyboard', 5700, 'kb2.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <img src="mouse2.jpg" alt="7th Product">
+                <h3 class="product-title">Logitech Gaming Mouse</h3>
+                <p class="price">Rs. 2600</p>
+                <div class="button-group">
+                    <button onclick="addToCart('Logitech Gaming Mouse', 2600, 'mouse2.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <img src="pb1.jpg" alt="8th Product">
+                <h3 class="product-title">High Quality Power Bank</h3>
+                <p class="price">Rs. 12000</p>
+                <div class="button-group">
+                    <button onclick="addToCart('High Quality Power Bank', 12000, 'pb1.jpg')">Add to Cart</button>
+                    <button>Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-section">
+                <h3>Keep Exploring</h3>
+                <ul>
+                    <li><a href="/">What we do</a></li>
+                    <li><a href="/">Who we are</a></li>
+                    <li><a href="/">Our Impact</a></li>
+                    <li><a href="/">Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsroom</h3>
+                <ul>
+                    <li><a href="/">Careers</a></li>
+                    <li><a href="/">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Our Markets</h3>
+                <ul>
+                    <li><a href="/">🇵🇰 Pakistan</a></li>
+                    <li><a href="/">🇧🇩 Bangladesh</a></li>
+                    <li><a href="/">🇱🇰 Sri Lanka</a></li>
+                    <li><a href="/">🇳🇵 Nepal</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <span><strong>Sell with us</strong></span> |
+            <span>Shop with us</span>
+            <div class="footer-countries">
+                <a href="/">🇵🇰 Pakistan</a>
+                <a href="/">🇧🇩 Bangladesh</a>
+                <a href="/">🇱🇰 Sri Lanka</a>
+                <a href="/">🇳🇵 Nepal</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Senzy Group</p>
+            <a href="/">Privacy Policy</a> |
+            <a href="/">Site Credits</a>
+            <p class="go-top"><a href="/">Go to top</a></p>
+        </div>
+    </footer>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+    <!-- Search Functionality Script -->
+    <script>
+        function searchProducts() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const cards = document.querySelectorAll(".product-card");
+
+            cards.forEach(card => {
+                const title = card.querySelector(".product-title").textContent.toLowerCase();
+                if (title.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+
+    <!-- Cart Functionality Script -->
+    <script>
+        let cart = [];
+        let cartCount = 0;
+
+        // Load cart from localStorage if available
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart'));
+            updateCartCount();
+        }
+
+        function openCart() {
+            document.getElementById("cartSidebar").style.width = "350px";
+            updateCartDisplay();
+        }
+
+        function closeCart() {
+            document.getElementById("cartSidebar").style.width = "0";
+        }
+
+        function addToCart(productName, price, image) {
+            // Check if product already exists in cart
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    name: productName,
+                    price: price,
+                    quantity: 1,
+                    image: image
+                });
+            }
+            
+            // Update cart count
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById("cartCount").textContent = cartCount;
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            updateCartDisplay();
+            openCart();
+            
+            // Show added notification
+            alert(`${productName} added to cart!`);
+        }
+
+        function updateCartDisplay() {
+            const cartItemsElement = document.getElementById("cartItems");
+            const cartTotalElement = document.getElementById("cartTotal");
+            
+            // Clear current items
+            cartItemsElement.innerHTML = '';
+            
+            // Add each item to the display
+            let total = 0;
+            cart.forEach(item => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <img src="${item.image}" alt="${item.name}" style="width: 50px; height: 50px; object-fit: cover;">
+                        <div>
+                            <div>${item.name}</div>
+                            <div>Rs. ${item.price} x ${item.quantity} = Rs. ${item.price * item.quantity}</div>
+                            <div style="display: flex; gap: 5px; margin-top: 5px;">
+                                <button onclick="changeQuantity('${item.name}', -1)" style="padding: 2px 5px;">-</button>
+                                <button onclick="changeQuantity('${item.name}', 1)" style="padding: 2px 5px;">+</button>
+                                <button onclick="removeItem('${item.name}')" style="padding: 2px 5px; margin-left: 5px;">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                cartItemsElement.appendChild(li);
+                total += item.price * item.quantity;
+            });
+            
+            // Update total
+            cartTotalElement.innerHTML = `<strong>Total:</strong> Rs. ${total}`;
+        }
+
+        function changeQuantity(productName, change) {
+            const item = cart.find(item => item.name === productName);
+            if (item) {
+                item.quantity += change;
+                
+                // Remove if quantity is 0 or less
+                if (item.quantity <= 0) {
+                    cart = cart.filter(item => item.name !== productName);
+                }
+                
+                // Update cart count
+                cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById("cartCount").textContent = cartCount;
+                
+                // Save to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                
+                updateCartDisplay();
+            }
+        }
+
+        function removeItem(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            
+            // Update cart count
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById("cartCount").textContent = cartCount;
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            updateCartDisplay();
+        }
+
+        function updateCartCount() {
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById("cartCount").textContent = cartCount;
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            alert("Checkout functionality would go here!\nTotal: Rs. " + 
+                  cart.reduce((total, item) => total + (item.price * item.quantity), 0));
+            // In a real implementation, you would redirect to a checkout page
+        }
+    </script>
+</body>
+
+</html>
