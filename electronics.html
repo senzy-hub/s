@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Electronics - Senzy</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- START: Navbar (same as index.html) -->
+    <nav class="navbar">
+        <div class="nav-top">
+            <div class="nav-logo"><a href="/">👑Senzy</a></div>
+            <div class="nav-search">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="electronics.html">Electronics</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+               
+                <li><a href="beauty.html">Beauty</a></li>
+                <li><a href="groceries.html">Groceries</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- END: Navbar -->
+
+    <!-- Blank content area -->
+ <!-- Product Grid -->
+<section class="products">
+  <h2>Popular Products</h2>
+  <div class="product-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="smartwatch.jpg" alt="1st Product">
+      <h3 class="product-title">Smart Watch</h3>
+      <p class="price">Rs. 2800<span class="old-price">Rs. 4500</span></p>
+      <div class="button-group">
+        <button onclick="addToCart('Smart Watch', 2800, 'smartwatch.jpg')">Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="s24.jpg" alt="2nd Product">
+      <h3 class="product-title">Samsung S24 Ultra</h3>
+      <p class="price">Rs. 450000<span class="old-price">Rs. 5600</span></p>
+      <div class="button-group">
+        <button onclick="addToCart('Samsung S24 Ultra', 450000, 's24.jpg')">Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+      <img src="3hp.jpg" alt="3rd Product">
+      <h3 class="product-title">HeadPhones 3 in 1</h3>
+      <p class="price">Rs. 7899<span class="old-price">Rs. 9500</span></p>
+      <div class="button-group">
+        <button onclick="addToCart('3 Headphones', 7899, '3hp.jpg')">Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+      <img src="sonycamera.jpg" alt="4th Product">
+      <h3 class="product-title">Sony Camera</h3>
+      <p class="price">Rs. 9000<span class="old-price">Rs. 9500</span></p>
+      <div class="button-group">
+        <button onclick="addToCart('Sony Camera', 9000, 'sonycamera.jpg')">Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+  </div> <!-- CLOSE product-grid -->
+</section>
+
+</body>
+</html>

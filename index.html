@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senzy</title>
@@ -23,7 +24,7 @@
             padding-top: 20px;
             box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         }
-        
+
         .cart-sidebar h3 {
             padding: 0 20px;
         }
@@ -53,19 +54,11 @@
         }
     </style>
 </head>
-<!-- Cart Sidebar -->
-<div id="cartSidebar" class="cart-sidebar">
-    <h3>Your Cart</h3>
-    <ul id="cartItems">
-        <!-- Cart items will appear here -->
-    </ul>
-    <p id="cartTotal"><strong>Total:</strong> Rs. 0</p>
-    <button onclick="closeCart()">Close</button>
-    <button onclick="checkout()">Checkout</button>
-</div>
+
 
 <body>
     <!-- Navbar -->
+     
     <nav class="navbar">
         <div class="nav-top">
             <div class="nav-logo">
@@ -84,11 +77,11 @@
         <div class="nav-bottom">
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/">Electronics</a></li>
-                <li><a href="/">Fashion</a></li>
-                <li><a href="/">Home & Living</a></li>
-                <li><a href="/">Beauty</a></li>
-                <li><a href="/">Groceries</a></li>
+                <li><a href="electronics.html">Electronics</a></li>
+                <li><a href="fashion.html">Fashion</a></li>
+            
+                <li><a href="beauty.html">Beauty</a></li>
+                <li><a href="groceries.html">Groceries</a></li>
             </ul>
         </div>
     </nav>
@@ -399,6 +392,18 @@
             // In a real implementation, you would redirect to a checkout page
         }
     </script>
+    
+<!-- Cart Sidebar -->
+<div id="cartSidebar" class="cart-sidebar">
+    <h3>Your Cart</h3>
+    <ul id="cartItems">
+        <!-- Cart items will appear here -->
+    </ul>
+    <p id="cartTotal"><strong>Total:</strong> Rs. 0</p>
+    <button onclick="closeCart()">Close</button>
+    <button onclick="checkout()">Checkout</button>
+</div>
+
 </body>
 
 </html>
