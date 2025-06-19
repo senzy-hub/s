@@ -10,7 +10,141 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="png" href="senzy.png" />
     <style>
-        /* Add this style for the cart sidebar */
+        @media (max-width: 768px) {
+  /* Navbar top section */
+  .nav-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .nav-logo, .nav-search, .nav-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav-search input {
+    width: 70%;
+    padding: 8px;
+  }
+
+  .nav-search button {
+    padding: 8px 12px;
+  }
+
+  /* Navbar bottom links */
+  .nav-bottom .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 10px;
+  }
+
+  /* Hero section */
+  .hero-content {
+    padding: 20px;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .hero-content button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  /* Product grid */
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 10px;
+  }
+
+  .product-card {
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .product-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+
+  /* Cart sidebar */
+  .cart-sidebar {
+    width: 100% !important;
+    padding: 10px;
+  }
+
+  /* Footer */
+  .footer-top {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .footer-section h3 {
+    font-size: 16px;
+  }
+
+  .footer-links, .footer-bottom {
+    text-align: center;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .footer-countries {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .footer-countries a {
+    margin: 0 5px;
+  }
+}
+
+       .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-icon {
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.profile-icon:hover {
+    color: #555;
+}
+       
+       /* Add this style for the cart sidebar */
         .cart-sidebar {
             height: 100%;
             width: 0;
@@ -62,16 +196,17 @@
     <nav class="navbar">
         <div class="nav-top">
             <div class="nav-logo">
-                <a href="/">👑Senzy</a>
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/">Senzy</a>
             </div>
             <div class="nav-search">
                 <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products...">
                 <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
             </div>
-
+    
             <div class="nav-actions">
                 <a href="login.html"><i class="fas fa-user"></i> Login</a>
-               <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
             </div>
         </div>
         <div class="nav-bottom">
@@ -79,19 +214,17 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="electronics.html">Electronics</a></li>
                 <li><a href="fashion.html">Fashion</a></li>
-            
                 <li><a href="beauty.html">Beauty</a></li>
                 <li><a href="groceries.html">Groceries</a></li>
             </ul>
         </div>
     </nav>
-
     <!-- Hero Banner -->
     <section class="hero">
         <div class="hero-content">
             <h1>Big Sale Up To 70% Off!</h1>
             <p>Shop the best deals on thousands of products</p>
-            <button>Buy Now</button>
+            <button onclick="window.location.href='checkout.html'">Buy Now</button>
         </div>
     </section>
 
@@ -106,7 +239,7 @@
                 <p class="price">Rs. 4599<span class="old-price">Rs. 6799</span></p>
                 <div class="button-group">
                     <button onclick="addToCart('Wireless Headphones', 4599, 'hp1.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Wireless Headphones', 4599, 'hp1.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -117,7 +250,7 @@
                 <p class="price">Rs. 3499<span class="old-price">Rs. 5600</span></p>
                 <div class="button-group">
                     <button onclick="addToCart('Gaming Mouse', 3499, 'mouse1.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Gaming Mouse', 3499, 'mouse1.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -128,7 +261,7 @@
                 <p class="price">Rs. 8900<span class="old-price">Rs. 11400</span></p>
                 <div class="button-group">
                     <button onclick="addToCart('Moniter', 8900, 'moniter1.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Moniter', 8900, 'moniter1.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -139,7 +272,7 @@
                 <p class="price">Rs. 4000<span class="old-price">Rs. 5600</span></p>
                 <div class="button-group">
                     <button onclick="addToCart('Gaming Keyboard', 4000, 'kb1.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Gaming Keyboard', 4000, 'kb1.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -150,7 +283,7 @@
                 <p class="price">Rs. 2900<span class="old-price">Rs. 3500 </span></p>
                 <div class="button-group">
                     <button onclick="addToCart('Classic Headphones', 2900, 'hp2.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Classic Headphones', 2900, 'hp2.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -161,7 +294,7 @@
                 <p class="price">Rs. 5700</p>
                 <div class="button-group">
                     <button onclick="addToCart('Cool Keyboard', 5700, 'kb2.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Cool Keyboard', 5700, 'kb2.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -172,7 +305,7 @@
                 <p class="price">Rs. 2600</p>
                 <div class="button-group">
                     <button onclick="addToCart('Logitech Gaming Mouse', 2600, 'mouse2.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('Logitech Gaming Mouse', 2600, 'mouse2.jpg')">Buy Now</button>
                 </div>
             </div>
 
@@ -183,7 +316,7 @@
                 <p class="price">Rs. 12000</p>
                 <div class="button-group">
                     <button onclick="addToCart('High Quality Power Bank', 12000, 'pb1.jpg')">Add to Cart</button>
-                    <button>Buy Now</button>
+                    <button onclick="buyNow('High Quality Power Bank', 12000, 'pb1.jpg')">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -310,6 +443,22 @@
             alert(`${productName} added to cart!`);
         }
 
+        function buyNow(productName, price, image) {
+            // Create a temporary cart with just this item
+            const tempCart = [{
+                name: productName,
+                price: price,
+                quantity: 1,
+                image: image
+            }];
+            
+            // Save to localStorage
+            localStorage.setItem('tempCart', JSON.stringify(tempCart));
+            
+            // Redirect to checkout page
+            window.location.href = 'checkout.html';
+        }
+
         function updateCartDisplay() {
             const cartItemsElement = document.getElementById("cartItems");
             const cartTotalElement = document.getElementById("cartTotal");
@@ -387,9 +536,9 @@
                 alert("Your cart is empty!");
                 return;
             }
-            alert("Checkout functionality would go here!\nTotal: Rs. " + 
-                  cart.reduce((total, item) => total + (item.price * item.quantity), 0));
-            // In a real implementation, you would redirect to a checkout page
+            // Save the current cart as tempCart for checkout page
+            localStorage.setItem('tempCart', JSON.stringify(cart));
+            window.location.href = 'checkout.html';
         }
     </script>
     

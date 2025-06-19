@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Senzy</title>
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .profile-pic {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 20px;
+    }
+    .profile-info h2 {
+      margin: 0;
+      color: #333;
+    }
+    .profile-info p {
+      margin: 5px 0 0;
+      color: #666;
+    }
+    .profile-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .detail-card {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 6px;
+    }
+    .detail-card h3 {
+      margin-top: 0;
+      color: #f85606;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+      <img id="profilePicture" src="default-user.png" alt="Profile" class="profile-pic">
+      <div class="profile-info">
+        <h2 id="userName">User Name</h2>
+        <p id="userEmail">user@example.com</p>
+        <p>Member since: <span id="joinDate">2023</span></p>
+      </div>
+    </div>
+    
+    <div class="profile-details">
+      <div class="detail-card">
+        <h3>Account Details</h3>
+        <p><strong>Name:</strong> <span id="detailName"></span></p>
+        <p><strong>Email:</strong> <span id="detailEmail"></span></p>
+      </div>
+      
+      <div class="detail-card">
+        <h3>Recent Orders</h3>
+        <p>You have <span id="orderCount">0</span> orders</p>
+        <a href="orders.html">View all orders</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+      
+      if (!currentUser) {
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      // Find the user in the database
+      const userData = users.find(user => user.email === currentUser.email);
+      
+      if (userData) {
+        // Update profile page with user data
+        document.getElementById('userName').textContent = userData.name;
+        document.getElementById('userEmail').textContent = userData.email;
+        document.getElementById('detailName').textContent = userData.name;
+        document.getElementById('detailEmail').textContent = userData.email;
+        
+        if (userData.profilePic) {
+          document.getElementById('profilePicture').src = userData.profilePic;
+        }
+        
+        if (userData.createdAt) {
+          const joinDate = new Date(userData.createdAt);
+          document.getElementById('joinDate').textContent = joinDate.toLocaleDateString();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
