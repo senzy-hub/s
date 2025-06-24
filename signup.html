@@ -1,3 +1,4 @@
+<!-- signup.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,6 @@
         align-items: center;
         height: 100vh;
         font-family: Arial, sans-serif;
-        margin: 0;
     }
     .signup-container {
         background-color: #fff;
@@ -25,7 +25,6 @@
     .signup-container h2 {
         text-align: center;
         margin-bottom: 25px;
-        color: #333;
     }
     .signup-container input {
         width: 100%;
@@ -33,7 +32,6 @@
         margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 6px;
-        box-sizing: border-box;
     }
     .signup-container button {
         width: 100%;
@@ -44,7 +42,6 @@
         border-radius: 6px;
         font-size: 16px;
         cursor: pointer;
-        margin-top: 10px;
     }
     .signup-container button:hover {
         background-color: #c94703;
@@ -53,146 +50,24 @@
         text-align: center;
         margin-top: 15px;
         font-size: 14px;
-        color: #666;
     }
     .signup-container a {
         color: #f85606;
         text-decoration: none;
-        font-weight: bold;
-    }
-    .error-message {
-        color: #d32f2f;
-        font-size: 12px;
-        margin-top: -5px;
-        margin-bottom: 10px;
-    }
-    .success-message {
-        color: #388e3c;
-        text-align: center;
-        margin-bottom: 15px;
-        font-size: 14px;
     }
   </style>
 </head>
 <body>
   <div class="signup-container">
     <h2>Create an Account</h2>
-    <div id="successMessage" class="success-message"></div>
-    <form id="signupForm">
-      <input type="text" id="fullName" placeholder="Full Name" required />
-      <input type="email" id="email" placeholder="Email Address" required />
-      <div id="emailError" class="error-message"></div>
-      <input type="password" id="password" placeholder="Password" required minlength="6" />
-      <div id="passwordError" class="error-message"></div>
-      <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
-      <div id="confirmPasswordError" class="error-message"></div>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="password" placeholder="Password" required />
+      <input type="password" placeholder="Confirm Password" required />
       <button type="submit">Sign Up</button>
     </form>
     <p>Already have an account? <a href="login.html">Login</a></p>
   </div>
-<!-- In the signup form submission script -->
-<script>
-  document.getElementById('signupForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // ... (previous validation code)
-  
-    // Create new user
-    const newUser = {
-      name: fullName,
-      email: email,
-      password: password, // Note: In production, hash this password
-      createdAt: new Date().toISOString(),
-      profilePic: 'default-user.png' // Add default profile picture
-    };
-    
-    // Save user to localStorage
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    
-    // Automatically log the user in
-    localStorage.setItem('currentUser', JSON.stringify({
-      name: fullName,
-      email: email,
-      profilePic: 'default-user.png'
-    }));
-    
-    // Redirect to homepage
-    window.location.href = 'index.html';
-  });
-  </script>
-  <script>
-    
-    document.getElementById('signupForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Clear previous error messages
-      document.getElementById('emailError').textContent = '';
-      document.getElementById('passwordError').textContent = '';
-      document.getElementById('confirmPasswordError').textContent = '';
-      document.getElementById('successMessage').textContent = '';
-      
-      // Get form values
-      const fullName = document.getElementById('fullName').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const confirmPassword = document.getElementById('confirmPassword').value;
-      
-      // Validate email format
-      if (!validateEmail(email)) {
-        document.getElementById('emailError').textContent = 'Please enter a valid email address';
-        return;
-      }
-      
-      // Validate password length
-      if (password.length < 6) {
-        document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
-        return;
-      }
-      
-      // Validate password match
-      if (password !== confirmPassword) {
-        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
-        return;
-      }
-      
-      // Check if user already exists
-      const users = JSON.parse(localStorage.getItem('users')) || [];
-      const userExists = users.some(user => user.email === email);
-      
-      if (userExists) {
-        document.getElementById('emailError').textContent = 'An account with this email already exists';
-        return;
-      }
-      
-      // Create new user (in a real app, you would hash the password)
-      const newUser = {
-        name: fullName,
-        email: email,
-        password: password, // Note: In production, never store plain text passwords
-        createdAt: new Date().toISOString()
-      };
-      
-      // Save user to localStorage
-      users.push(newUser);
-      localStorage.setItem('users', JSON.stringify(users));
-      
-      // Show success message
-      document.getElementById('successMessage').textContent = 'Account created successfully! Redirecting to login...';
-      
-      // Clear form
-      document.getElementById('signupForm').reset();
-      
-      // Redirect to login page after 2 seconds
-      setTimeout(() => {
-        window.location.href = 'login.html';
-      }, 2000);
-    });
-    
-    function validateEmail(email) {
-      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return re.test(email);
-    }
-  </script>
 </body>
 </html>

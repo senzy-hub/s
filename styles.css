@@ -479,4 +479,106 @@ button:hover {
 body.dark-mode .navbar {
     background-color: #1e1e1e; /* Dark background */
 }
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
+.fade-in {
+  animation: fadeIn 1s ease-in;
+}
+
+/* Hover animation */
+.button-hover {
+  transition: transform 0.3s ease;
+}
+.button-hover:hover {
+  transform: scale(1.05);
+}
+  /* Add this at the top of your style section */
+  html, body {
+    width: 100%;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Ensure all elements stay within viewport */
+  * {
+    box-sizing: border-box;
+  }
+  
+  /* Specifically target elements that might cause overflow */
+  .navbar, .hero, .products, .footer {
+    max-width: 100vw;
+  }
+/* Ensure this is in your styles.css */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.product-card img {
+  width: 100%; /* Important! */
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.image-grid img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.image-grid img:hover {
+  transform: scale(1.05);
+}
+.media-gallery {
+  padding: 20px;
+}
+
+.media-gallery h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.media-block {
+  max-width: 400px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+.media-block img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.media-block video {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
