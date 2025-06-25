@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzy Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar sticky-navbar cool-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                <li><a href="blog.html" class="tab-link"><i class="fas fa-blog"></i> Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main style="padding:40px 5%;text-align:center;min-height:60vh;">
+        <h1 class="blog-title">Welcome to the Senzy Blog</h1>
+        <p class="blog-desc">Stay tuned for updates, news, and articles from the Senzy team!</p>
+        <div class="blog-features">
+            <div class="feature-card animate-pop">
+                <i class="fas fa-bolt"></i>
+                <h2>Latest Tech News</h2>
+                <p>Get the hottest updates on electronics, gadgets, and innovation in the tech world.</p>
+            </div>
+            <div class="feature-card animate-pop" style="animation-delay:0.2s;">
+                <i class="fas fa-tshirt"></i>
+                <h2>Fashion Trends</h2>
+                <p>Discover the latest styles, tips, and inspiration for your wardrobe.</p>
+            </div>
+            <div class="feature-card animate-pop" style="animation-delay:0.4s;">
+                <i class="fas fa-seedling"></i>
+                <h2>Healthy Living</h2>
+                <p>Read about groceries, wellness, and tips for a healthier lifestyle.</p>
+            </div>
+            <div class="feature-card animate-pop" style="animation-delay:0.6s;">
+                <i class="fas fa-star"></i>
+                <h2>Exclusive Offers</h2>
+                <p>Be the first to know about special deals, discounts, and giveaways!</p>
+            </div>
+        </div>
+    </main>
+    <style>
+    .blog-title {
+        font-size: 2.5rem;
+        color: #ffd54f;
+        margin-bottom: 12px;
+        letter-spacing: 1.5px;
+        text-shadow: 0 2px 8px #0002;
+        animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .blog-desc {
+        font-size: 1.2rem;
+        color: #232323;
+        margin-bottom: 36px;
+        animation: fadeIn 1.2s;
+    }
+    .blog-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+        align-items: stretch;
+        margin-top: 24px;
+    }
+    .feature-card {
+        background: linear-gradient(135deg, #fffbe6 60%, #fffde7 100%);
+        border-radius: 18px;
+        box-shadow: 0 4px 24px #ffd54f33;
+        padding: 32px 28px 24px 28px;
+        min-width: 220px;
+        max-width: 320px;
+        flex: 1 1 220px;
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .feature-card i {
+        font-size: 2.5rem;
+        color: #ffd54f;
+        margin-bottom: 16px;
+        animation: floatIcon 2.5s infinite alternate;
+    }
+    .feature-card h2 {
+        font-size: 1.3rem;
+        color: #e67e22;
+        margin-bottom: 10px;
+    }
+    .feature-card p {
+        color: #232323;
+        font-size: 1.05rem;
+    }
+    .feature-card:hover {
+        transform: translateY(-8px) scale(1.04) rotate(-2deg);
+        box-shadow: 0 8px 32px #ffd54f66;
+        background: linear-gradient(135deg, #fffde7 60%, #fffbe6 100%);
+    }
+    @media (max-width: 900px) {
+        .blog-features { flex-direction: column; gap: 18px; }
+        .feature-card { max-width: 100%; }
+    }
+    /* Animations */
+    @keyframes popIn {
+        0% { transform: scale(0.7); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes floatIcon {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-8px); }
+    }
+    .animate-pop {
+        opacity: 0;
+        animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+    }
+    .animate-pop:nth-child(1) { animation-delay: 0.1s; }
+    .animate-pop:nth-child(2) { animation-delay: 0.3s; }
+    .animate-pop:nth-child(3) { animation-delay: 0.5s; }
+    .animate-pop:nth-child(4) { animation-delay: 0.7s; }
+    body.dark-mode .blog-title { color: #ffd54f; text-shadow: 0 2px 8px #000a; }
+    body.dark-mode .blog-desc { color: #ffd54f; }
+    body.dark-mode .feature-card {
+        background: linear-gradient(135deg, #232323 60%, #181818 100%) !important;
+        color: #ffd54f !important;
+        box-shadow: 0 4px 24px #ffd54f33;
+    }
+    body.dark-mode .feature-card h2 { color: #ffd54f; }
+    body.dark-mode .feature-card p { color: #ffd54f; }
+    body.dark-mode .feature-card i { color: #ffd54f; }
+    </style>
+    <footer class="footer">
+        <div class="footer-bottom">
+            <p>© 2025 Senzy Group. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

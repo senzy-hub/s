@@ -10,36 +10,176 @@
 <body>
 
     <!-- START: Navbar (same as index.html) -->
-    <nav class="navbar">
+    <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
         <div class="nav-top">
-            <div class="nav-logo"><a href="/">👑Senzy</a></div>
-            <div class="nav-search">
-                <input type="text" placeholder="Search...">
-                <button><i class="fas fa-search"></i></button>
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products, brands, or categories...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
             </div>
             <div class="nav-actions">
                 <a href="login.html"><i class="fas fa-user"></i> Login</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+                <button id="darkModeToggle" title="Toggle dark mode" style="margin-left:12px; background:none; border:none; color:inherit; font-size:20px; cursor:pointer;"><i class="fas fa-moon"></i></button>
             </div>
         </div>
         <div class="nav-bottom">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="electronics.html">Electronics</a></li>
-                <li><a href="fashion.html">Fashion</a></li>
-               
-                <li><a href="beauty.html">Beauty</a></li>
-                <li><a href="groceries.html">Groceries</a></li>
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
             </ul>
         </div>
     </nav>
     <!-- END: Navbar -->
 
     <!-- Blank content area -->
-    <section style="padding: 60px; text-align: center;">
-        <h1>Groceries</h1>
-        <p>Is mey bhi kuch ni ha</p>
-    </section>
+<section class="gallery">
+    <h2></h2>
+    <div class="image-grid">
+
+        <!-- Repeat only image-container inside image-grid -->
+        <div class="image-container">
+            <img src="image7.jpg" alt="Gallery Image 1">
+            <a class="download-btn" href="image7.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image8.jpg" alt="Gallery Image 2">
+            <a class="download-btn" href="image8.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image9.jpg" alt="Gallery Image 3">
+            <a class="download-btn" href="image9.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image10.jpg" alt="Gallery Image 4">
+            <a class="download-btn" href="image10.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image11.jpg" alt="Gallery Image 5">
+            <a class="download-btn" href="image11.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image12.jpg" alt="Gallery Image 6">
+            <a class="download-btn" href="image12.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image13.jpg" alt="Gallery Image 7">
+            <a class="download-btn" href="image13.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image14.jpg" alt="Gallery Image 8">
+            <a class="download-btn" href="image14.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image15.jpg" alt="Gallery Image 9">
+            <a class="download-btn" href="image15.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image17.jpg" alt="Gallery Image 10">
+            <a class="download-btn" href="image17.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image18.jpg" alt="Gallery Image 11">
+            <a class="download-btn" href="image18.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image19.jpg" alt="Gallery Image 12">
+            <a class="download-btn" href="image19.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image20.jpg" alt="Gallery Image 13">
+            <a class="download-btn" href="image20.jpg" download>Download</a>
+        </div>
+        <div class="image-container">
+            <img src="image23.jpg" alt="Gallery Image 14">
+            <a class="download-btn" href="image23.jpg" download>Download</a>
+        </div>
+
+        <div class="image-container">
+            <img src="image25.jpg" alt="Gallery Image 16">
+            <a class="download-btn" href="image25.jpg" download>Download</a>
+        </div>
+    </div>
+</section>
+
+<script>
+// --- Dark Mode Toggle ---
+const darkModeToggle = document.getElementById('darkModeToggle');
+const darkModeClass = 'dark-mode';
+if (localStorage.getItem('senzyDarkMode') === 'true') {
+  document.body.classList.add(darkModeClass);
+}
+darkModeToggle.addEventListener('click', function() {
+  document.body.classList.toggle(darkModeClass);
+  localStorage.setItem('senzyDarkMode', document.body.classList.contains(darkModeClass));
+  updateDarkModeIcon();
+});
+function updateDarkModeIcon() {
+  if (document.body.classList.contains(darkModeClass)) {
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+}
+updateDarkModeIcon();
+</script>
+
+<style>
+body.dark-mode {
+  background: #181818 !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .navbar, body.dark-mode nav {
+  background: linear-gradient(90deg, #181818 60%, #23243a 100%) !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .nav-links li a, body.dark-mode .nav-links li a:visited {
+  color: #ffd54f !important;
+}
+body.dark-mode .nav-links li a:hover {
+  background: #23243a !important;
+  color: #fffbe6 !important;
+}
+body.dark-mode .gallery, body.dark-mode .image-grid {
+  background: #23243a !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .image-container {
+  background: #181818 !important;
+  color: #ffd54f !important;
+  border: 1px solid #333753 !important;
+  box-shadow: 0 2px 12px #ffd54f22 !important;
+}
+body.dark-mode .image-container img {
+  background: #23243a !important;
+  border: 1px solid #333753 !important;
+}
+body.dark-mode .download-btn {
+  background: #ffd54f !important;
+  color: #23243a !important;
+}
+body.dark-mode .nav-search input {
+  background: #23243a !important;
+  color: #ffd54f !important;
+  border: 1px solid #333753 !important;
+}
+body.dark-mode .nav-search button {
+  background: #ffd54f !important;
+  color: #23243a !important;
+}
+body.dark-mode .nav-search input::placeholder {
+  color: #ffd54f99 !important;
+}
+body.dark-mode .nav-logo a, body.dark-mode .brand-name {
+  color: #ffd54f !important;
+}
+</style>
 
 </body>
 </html>

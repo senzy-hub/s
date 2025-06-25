@@ -10,26 +10,29 @@
 <body>
 
     <!-- START: Navbar (same as index.html) -->
-    <nav class="navbar">
+    <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
         <div class="nav-top">
-            <div class="nav-logo"><a href="/">Senzy</a></div>
-            <div class="nav-search">
-                <input type="text" placeholder="Search...">
-                <button><i class="fas fa-search"></i></button>
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products, brands, or categories...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
             </div>
             <div class="nav-actions">
                 <a href="login.html"><i class="fas fa-user"></i> Login</a>
-                <a href="#"><i class="fas fa-shopping-cart"></i> Cart</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+                <button id="darkModeToggle" title="Toggle dark mode" style="margin-left:12px; background:none; border:none; color:inherit; font-size:20px; cursor:pointer;"><i class="fas fa-moon"></i></button>
             </div>
         </div>
         <div class="nav-bottom">
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="electronics.html">Electronics</a></li>
-                <li><a href="fashion.html">Fashion</a></li>
-               
-                <li><a href="beauty.html">Beauty</a></li>
-                <li><a href="groceries.html">Groceries</a></li>
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
             </ul>
         </div>
     </nav>
@@ -39,7 +42,7 @@
  <!-- Product Grid -->
 <section class="products">
   <h2>Popular Products</h2>
-  <div class="product-grid">
+  <div class="product-grid" id="productGrid">
 
     <!-- Product 1 -->
     <div class="product-card">
@@ -143,6 +146,101 @@
 
 
 </section>
+
+<script>
+function searchProducts() {
+  const input = document.getElementById('searchInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.product-card');
+  cards.forEach(card => {
+    const title = card.querySelector('.product-title').textContent.toLowerCase();
+    if (title.includes(input)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+// Optional: Live search as you type
+const searchInput = document.getElementById('searchInput');
+if (searchInput) {
+  searchInput.addEventListener('input', searchProducts);
+}
+
+// --- Dark Mode Toggle ---
+const darkModeToggle = document.getElementById('darkModeToggle');
+const darkModeClass = 'dark-mode';
+// Load dark mode preference
+if (localStorage.getItem('senzyDarkMode') === 'true') {
+  document.body.classList.add(darkModeClass);
+}
+darkModeToggle.addEventListener('click', function() {
+  document.body.classList.toggle(darkModeClass);
+  localStorage.setItem('senzyDarkMode', document.body.classList.contains(darkModeClass));
+  updateDarkModeIcon();
+});
+function updateDarkModeIcon() {
+  if (document.body.classList.contains(darkModeClass)) {
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+}
+updateDarkModeIcon();
+</script>
+
+<style>
+body.dark-mode {
+  background: #181818 !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .navbar, body.dark-mode nav {
+  background: linear-gradient(90deg, #181818 60%, #23243a 100%) !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .nav-links li a, body.dark-mode .nav-links li a:visited {
+  color: #ffd54f !important;
+}
+body.dark-mode .nav-links li a:hover {
+  background: #23243a !important;
+  color: #fffbe6 !important;
+}
+body.dark-mode .products {
+  background: #23243a !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .product-card {
+  background: #181818 !important;
+  color: #ffd54f !important;
+  border: 1px solid #333753 !important;
+  box-shadow: 0 2px 12px #ffd54f22 !important;
+}
+body.dark-mode .product-card .old-price {
+  color: #555875 !important;
+}
+body.dark-mode .product-card button {
+  background: #333753 !important;
+  color: #ffd54f !important;
+}
+body.dark-mode .product-card button:hover {
+  background: #ffd54f !important;
+  color: #23243a !important;
+}
+body.dark-mode .nav-search input {
+  background: #23243a !important;
+  color: #ffd54f !important;
+  border: 1px solid #333753 !important;
+}
+body.dark-mode .nav-search button {
+  background: #ffd54f !important;
+  color: #23243a !important;
+}
+body.dark-mode .nav-search input::placeholder {
+  color: #ffd54f99 !important;
+}
+body.dark-mode .nav-logo a, body.dark-mode .brand-name {
+  color: #ffd54f !important;
+}
+</style>
 
 </body>
 </html>

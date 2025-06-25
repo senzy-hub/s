@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help Center - Senzy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="png" href="senzy.png">
+    <style>
+        .sticky-navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            width: 100%; /* Ensure no overflow */
+        }
+        @media (max-width: 768px) {
+            .sticky-navbar {
+                position: fixed;
+                width: 100%; /* Fix white line bug: use 100% not 100vw */
+            }
+        }
+        html, body {
+            overflow-x: hidden; /* Prevent horizontal scroll and white line */
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .help-content h2, .help-content h3, .help-content p, .help-content ul, .help-content li {
+            animation: fadeIn 1.2s;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar sticky-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/">Senzy</a>
+            </div>
+            <div class="nav-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search for products...">
+                <button onclick="searchProducts()"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="electronics.html">Electronics</a></li>
+                <li><a href="fashion.html">4K Video</a></li>
+                <li><a href="groceries.html">4K Pictures</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section class="help-center" style="max-width:700px;margin:40px auto;padding:32px;background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.10);">
+        <h1 style="text-align:center;font-size:2.5rem;margin-bottom:16px;animation: fadeInDown 1s;">Help Center <span style="font-size:2rem;">🛟</span></h1>
+        <p style="text-align:center;font-size:1.2rem;animation: fadeIn 1.2s;">Welcome to the Senzy Help Center! <span style="font-size:1.5rem;">😊</span> How can we assist you today?</p>
+        <div style="margin-bottom: 24px;animation: fadeIn 1.4s;">
+            <ul style="font-size:1.1rem;">
+                <li>For order issues, contact <a href="mailto:support@senzy.com">support@senzy.com</a> <span>📧</span></li>
+                <li>For returns, visit the <a href="/returns">Returns & Refunds</a> page <span>🔄</span></li>
+                <li>For shipping info, see <a href="/shipping">Shipping Info</a> <span>🚚</span></li>
+            </ul>
+        </div>
+        <div class="help-content" style="text-align:justify; line-height:1.8; color:#333; font-size:1.08rem;">
+            <h2 style="margin-top:24px;animation: fadeInUp 1.2s;">About Senzy Help Center <span>💡</span></h2>
+            <p style="animation: fadeIn 1.3s;">
+                At Senzy, we are committed to providing you with the best online shopping experience possible. <span style="font-size:1.2em;">🛒</span> Our Help Center is designed to answer your questions, resolve your concerns, and guide you through every step of your journey with us. Whether you are a new customer or a returning shopper, our goal is to make your experience smooth, enjoyable, and worry-free. <span style="font-size:1.2em;">🤝</span>
+            </p>
+            <h3 style="margin-top:20px;animation: fadeInUp 1.4s;">Frequently Asked Questions <span>❓</span></h3>
+            <p><strong>1. How do I place an order?</strong> <span>🛍️</span><br>
+                Placing an order on Senzy is simple and secure. Browse our wide range of products, add your desired items to the cart, and proceed to checkout. You will be prompted to enter your shipping details and select a payment method. Once your order is confirmed, you will receive an email with your order summary and tracking information. <span>📦</span>
+            </p>
+            <p><strong>2. What payment methods are accepted?</strong> <span>💳</span><br>
+                We accept a variety of payment methods including credit/debit cards, online banking, and cash on delivery (COD) in select regions. All transactions are encrypted and your payment information is kept secure. <span>🔒</span>
+            </p>
+            <p><strong>3. How can I track my order?</strong> <span>🔎</span><br>
+                After placing your order, you will receive a tracking number via email. You can use this number on our <a href="/tracking">Order Tracking</a> page to monitor the status of your shipment in real time. If you have any issues, our support team is here to help. <span>📬</span>
+            </p>
+            <p><strong>4. What is your return policy?</strong> <span>↩️</span><br>
+                We want you to be completely satisfied with your purchase. If you are not happy with your order, you can initiate a return within 7 days of receiving your item. Please visit our <a href="/returns">Returns & Refunds</a> page for detailed instructions and eligibility criteria. <span>✅</span>
+            </p>
+            <p><strong>5. How do I contact customer support?</strong> <span>☎️</span><br>
+                You can reach our customer support team by emailing <a href="mailto:support@senzy.com">support@senzy.com</a> or by using the contact form on our <a href="/contact">Contact</a> page. Our team is available 24/7 to assist you with any questions or concerns. <span>🕑</span>
+            </p>
+            <h3 style="margin-top:20px;animation: fadeInUp 1.5s;">Shopping Tips & Security <span>🛡️</span></h3>
+            <p><strong>Safe Shopping:</strong> Always ensure you are shopping on our official website. <span>🔗</span> Look for the secure padlock icon in your browser’s address bar. Never share your password or payment details with anyone claiming to be from Senzy via phone or email. <span>🚫</span></p>
+            <p><strong>Account Management:</strong> Create a strong password for your Senzy account and update it regularly. <span>🔑</span> If you suspect any unauthorized activity, change your password immediately and contact our support team. <span>⚠️</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 1.6s;">Delivery & Shipping <span>🚚</span></h3>
+            <p>We offer fast and reliable shipping across Pakistan and neighboring countries. <span>🌏</span> Delivery times may vary depending on your location and the product you have ordered. You can find estimated delivery times on each product page and during checkout. For more information, visit our <a href="/shipping">Shipping Info</a> page. <span>⏱️</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 1.7s;">Returns & Refunds <span>💸</span></h3>
+            <p>If you need to return an item, please ensure it is in its original condition and packaging. <span>📦</span> Once we receive your return, we will process your refund within 5-7 business days. Refunds will be issued to your original payment method. For more details, see our <a href="/returns">Returns & Refunds</a> policy. <span>💰</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 1.8s;">Account & Privacy <span>🔐</span></h3>
+            <p>Your privacy is important to us. <span>🕵️‍♂️</span> We use advanced security measures to protect your personal information. You can manage your account details, view your order history, and update your preferences by logging into your Senzy account. For more information, read our <a href="/privacy">Privacy Policy</a>. <span>📑</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 1.9s;">Contact Us <span>📞</span></h3>
+            <p>If you have any questions, feedback, or suggestions, please do not hesitate to contact us. <span>💬</span> We value your input and are always looking for ways to improve our service. You can reach us via email, phone, or live chat on our website. <span>🌐</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 2.0s;">Community & Social Media <span>🌟</span></h3>
+            <p>Join our community on social media to stay updated on the latest products, promotions, and news. <span>📱</span> Follow us on <a href="https://www.instagram.com/senzy_ff_/" target="_blank">Instagram</a> <span>📸</span>, <a href="https://youtube.com/@Senzy_King" target="_blank">YouTube</a> <span>▶️</span>, and <a href="https://tiktok.com/@senzy_ff_" target="_blank">TikTok</a> <span>🎵</span> for exclusive content and offers.</p>
+            <h3 style="margin-top:20px;animation: fadeInUp 2.1s;">Why Shop with Senzy? <span>🏆</span></h3>
+            <p>Senzy is dedicated to bringing you the best selection of electronics, fashion, beauty products, and groceries at unbeatable prices. <span>🛍️</span> Our user-friendly platform, secure payment options, and responsive customer service make us the preferred choice for online shoppers across the region. <span>🌍</span></p>
+            <p>We believe in transparency, quality, and customer satisfaction. <span>✔️</span> Every product listed on our website is carefully curated and quality-checked to ensure you receive only the best. Our team works tirelessly to source the latest trends and must-have items, so you can shop with confidence. <span>💯</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 2.2s;">Feedback & Suggestions <span>📝</span></h3>
+            <p>Your feedback helps us grow and improve. <span>🌱</span> If you have suggestions for new features, products, or services, please let us know. We are committed to evolving with your needs and providing a shopping experience that exceeds your expectations. <span>🚀</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 2.3s;">Help Center Updates <span>🔄</span></h3>
+            <p>We regularly update our Help Center to address new questions and provide the most accurate information. <span>🆕</span> Be sure to check back often for the latest updates, tips, and announcements. <span>📢</span></p>
+            <h3 style="margin-top:20px;animation: fadeInUp 2.4s;">Thank You for Choosing Senzy <span>🙏</span></h3>
+            <p>Thank you for being a valued member of the Senzy community. <span>❤️</span> We appreciate your trust and look forward to serving you for years to come. If you ever need assistance, our Help Center is always here for you. <span>🤗</span></p>
+            <div style="margin-top:40px;text-align:center;animation: fadeInUp 2.5s;">
+                <h3 style="font-size:1.3rem;letter-spacing:1px;">Connect with Us <span>🔗</span></h3>
+                <div style="display:flex;justify-content:center;gap:32px;margin-top:18px;flex-wrap:wrap;">
+                    <a href="https://youtube.com/@Senzy_King" target="_blank" aria-label="YouTube" style="display:inline-block;text-align:center;text-decoration:none;transition:transform 0.2s;">
+                        <div style="font-size:3rem;line-height:1;">
+                            <i class="fab fa-youtube" style="color:#FF0000;filter:drop-shadow(0 2px 8px #ff000080);"></i>
+                        </div>
+                        <span style="display:block;font-size:1.1rem;font-weight:600;color:#FF0000;margin-top:4px;">YouTube</span>
+                        <span style="font-size:0.95rem;color:#555;">@Senzy_King</span>
+                    </a>
+                    <a href="https://tiktok.com/@senzy_ff_" target="_blank" aria-label="TikTok" style="display:inline-block;text-align:center;text-decoration:none;transition:transform 0.2s;">
+                        <div style="font-size:3rem;line-height:1;">
+                            <i class="fab fa-tiktok" style="color:#000;filter:drop-shadow(0 2px 8px #0002);"></i>
+                        </div>
+                        <span style="display:block;font-size:1.1rem;font-weight:600;color:#000;margin-top:4px;">TikTok</span>
+                        <span style="font-size:0.95rem;color:#555;">@senzy_ff_</span>
+                    </a>
+                    <a href="https://www.instagram.com/senzy_ff_/" target="_blank" aria-label="Instagram" style="display:inline-block;text-align:center;text-decoration:none;transition:transform 0.2s;">
+                        <div style="font-size:3rem;line-height:1;">
+                            <i class="fab fa-instagram" style="color:#C13584;filter:drop-shadow(0 2px 8px #c1358480);"></i>
+                        </div>
+                        <span style="display:block;font-size:1.1rem;font-weight:600;color:#C13584;margin-top:4px;">Instagram</span>
+                        <span style="font-size:0.95rem;color:#555;">@senzy_ff_</span>
+                    </a>
+                </div>
+                <div style="margin-top:18px;font-size:1.1rem;color:#444;">
+                    <span>Follow us for exclusive content, behind-the-scenes, and giveaways! <span style="font-size:1.3em;">🎉🔥</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <button id="darkModeToggle" style="position:fixed;top:24px;right:24px;z-index:2000;padding:10px 18px;border-radius:24px;background:#222;color:#fff;font-weight:600;border:none;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background 0.2s;">🌙 Dark Mode</button>
+    <script>
+        // Minimal search functionality for Help Center page
+        function searchProducts() {
+            alert('Product search is only available on the main shop pages.');
+        }
+        function openCart() {
+            alert('Cart is only available on the main shop pages.');
+        }
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            if(document.body.classList.contains('dark-mode')) {
+                darkModeToggle.textContent = '☀️ Light Mode';
+            } else {
+                darkModeToggle.textContent = '🌙 Dark Mode';
+            }
+        });
+    </script>
+    <style>
+        body.dark-mode {
+            background: #181818 !important;
+            color: #e0e0e0 !important;
+        }
+        body.dark-mode .help-center {
+            background: #232323 !important;
+            color: #e0e0e0 !important;
+            box-shadow: 0 2px 12px #0008;
+        }
+        body.dark-mode .navbar, body.dark-mode .sticky-navbar {
+            background: #232323 !important;
+            color: #e0e0e0 !important;
+            box-shadow: 0 2px 8px #0008;
+        }
+        body.dark-mode .nav-search input {
+            background: #181818 !important;
+            color: #e0e0e0 !important;
+            border: 1px solid #444 !important;
+        }
+        body.dark-mode .nav-search button {
+            background: #444 !important;
+            color: #fff !important;
+        }
+        body.dark-mode .nav-links a, body.dark-mode .nav-actions a {
+            color: #e0e0e0 !important;
+        }
+        body.dark-mode .help-content a {
+            color: #90caf9 !important;
+        }
+        body.dark-mode #darkModeToggle {
+            background: #e0e0e0 !important;
+            color: #232323 !important;
+        }
+        body.dark-mode .help-content h2,
+        body.dark-mode .help-content h3 {
+            color: #ffd54f !important;
+        }
+        body.dark-mode .help-content p,
+        body.dark-mode .help-content ul,
+        body.dark-mode .help-content li {
+            color: #e0e0e0 !important;
+        }
+        body.dark-mode .help-content strong {
+            color: #ffb300 !important;
+        }
+        body.dark-mode .help-content span,
+        body.dark-mode .help-content i {
+            color: #fffde7 !important;
+        }
+        body.dark-mode .download-btn {
+            background: #333 !important;
+            color: #ffd54f !important;
+            border: 1px solid #ffd54f !important;
+        }
+    </style>
+</body>
+</html>
