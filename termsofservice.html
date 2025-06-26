@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzy - Terms Of Service</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+     <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/index.html" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search For Products...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ending here -->
+    <main class="tos-container">
+        <h1>Terms of Service</h1>
+        <p>Welcome to Senzy! Please read these Terms of Service ("Terms") carefully before using our website.</p>
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing or using Senzy, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use our website.</p>
+        <h2>2. Use of the Website</h2>
+        <ul>
+            <li>You must be at least 18 years old or have parental consent to use this site.</li>
+            <li>You agree not to misuse the website or its services.</li>
+            <li>All content is for personal, non-commercial use unless otherwise stated.</li>
+        </ul>
+        <h2>3. User Accounts</h2>
+        <ul>
+            <li>You are responsible for maintaining the confidentiality of your account information.</li>
+            <li>Notify us immediately of any unauthorized use of your account.</li>
+        </ul>
+        <h2>4. Intellectual Property</h2>
+        <p>All content, trademarks, and data on this website are the property of Senzy or its licensors and are protected by copyright laws.</p>
+        <h2>5. Limitation of Liability</h2>
+        <p>Senzy is not liable for any damages arising from the use or inability to use the website.</p>
+        <h2>6. Changes to Terms</h2>
+        <p>We reserve the right to update these Terms at any time. Changes will be posted on this page.</p>
+        <h2>7. Contact Us</h2>
+        <p>If you have any questions about these Terms, please contact us at permnent5939@gmail.com.</p>
+    </main>
+    <button id="darkModeToggle" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <script>
+    // Dark mode toggle logic
+    const darkModeBtn = document.getElementById('darkModeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function setDarkMode(on) {
+        document.body.classList.toggle('dark-mode', on);
+        darkModeBtn.innerHTML = on ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('senzyDarkMode', on ? '1' : '0');
+    }
+    // Initial state
+    const saved = localStorage.getItem('senzyDarkMode');
+    setDarkMode(saved === '1' || (saved === null && prefersDark));
+    darkModeBtn.onclick = () => setDarkMode(!document.body.classList.contains('dark-mode'));
+    </script>
+</body>
+</html>

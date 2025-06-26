@@ -1004,6 +1004,7 @@ body.dark-mode .cool-tabs .tab-link:hover {
                 <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
                 <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
                 <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                
             </ul>
         </div>
     </nav>
@@ -1228,10 +1229,10 @@ body.dark-mode .cool-tabs .tab-link:hover {
             <div class="footer-section">
                 <h3>Keep Exploring</h3>
                 <ul>
-                    <li><a href="/about">What we do</a></li>
-                    <li><a href="/about">Who we are</a></li>
-                    <li><a href="/impact">Our Impact</a></li>
-                    <li><a href="/team">Our Team</a></li>
+                    <li><a href="/whatwedo.html">What we do</a></li>
+                    <li><a href="/whoweare.html">Who we are</a></li>
+                    <li><a href="ourimpact.html">Our Impact</a></li>
+                    <li><a href="ourteam.html">Our Team</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -1255,10 +1256,10 @@ body.dark-mode .cool-tabs .tab-link:hover {
             <div class="footer-section">
                 <h3>Our Markets</h3>
                 <ul>
-                    <li><a href="/pakistan">Pakistan</a></li>
-                    <li><a href="/bangladesh">Bangladesh</a></li>
-                    <li><a href="/srilanka">Sri Lanka</a></li>
-                    <li><a href="/nepal">Nepal</a></li>
+                    <li><a href="pakistan.html">Pakistan</a></li>
+                    <li><a href="bangladesh.html">Bangladesh</a></li>
+                    <li><a href="sl.html">Sri Lanka</a></li>
+                    <li><a href="nepal.html">Nepal</a></li>
                 </ul>
             </div>
         </div>
@@ -1268,19 +1269,19 @@ body.dark-mode .cool-tabs .tab-link:hover {
             <span>Shop with us</span> |
             <span>Gift cards</span>
             <div class="footer-countries">
-                <a href="/pakistan">Pakistan</a>
-                <a href="/bangladesh">Bangladesh</a>
-                <a href="/srilanka">Sri Lanka</a>
-                <a href="/nepal">Nepal</a>
+                <a href="pakistan.html">Pakistan</a>
+                <a href="bangladesh.html">Bangladesh</a>
+                <a href="sl.html">Sri Lanka</a>
+                <a href="nepal.html">Nepal</a>
             </div>
         </div>
 
         <div class="footer-bottom">
             <p>© 2025 Senzy Group. All rights reserved.</p>
             <div>
-                <a href="/privacy">Privacy Policy</a> |
-                <a href="/terms">Terms of Service</a> |
-                <a href="/credits">Site Credits</a>
+                <a href="privacypolicy.html">Privacy Policy</a> |
+                <a href="termsofservice.html">Terms of Service</a> |
+                <a href="sitecredits.html">Site Credits</a>
             </div>
             <div class="social-links">
                 <a href="https://youtube.com/@Senzy_King" aria-label="Facebook"><i class="fab fa-youtube"></i></a>
@@ -1304,8 +1305,22 @@ body.dark-mode .cool-tabs .tab-link:hover {
         </div>
     </div>
 
+    <!-- Order Summary Modal -->
+    <div id="orderSummaryModal" class="modal-overlay">
+      <div class="modal-content" style="max-width:500px;">
+        <button onclick="closeOrderSummaryModal()" class="modal-close" aria-label="Close">&times;</button>
+        <h2 class="modal-title" style="color:#3498db;">Order Summary</h2>
+        <div class="modal-body" id="orderSummaryBody">
+          <!-- JS is ko populate kare ga -->
+        </div>
+        <div style="text-align:center;margin-top:18px;">
+          <button onclick="confirmOrderSummary()" style="background:#27ae60;color:#fff;padding:12px 32px;border:none;border-radius:4px;font-weight:600;font-size:1.1rem;">Confirm & Continue</button>
+        </div>
+      </div>
+    </div>
+
     <!-- Dark Mode Toggle Button -->
-    <button id="darkModeToggle" style="position:fixed;bottom:24px;right:24px;z-index:2000;padding:10px 18px;border-radius:24px;background:#222;color:#fff;font-weight:600;border:none;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background 0.2s;">🌙 Dark Mode</button>
+    <button id="darkModeToggle" style="position:fixed;bottom:24px;right:24px;z-index:2000;padding:10px 18px;border-radius:24px;background:#222;color:#fff;font-weight:600;border:none;box-shadow:0 2px 8px #0002;cursor:pointer;transition:background 0.2s;">🌙</button>
 
     <style>
         @media (max-width: 600px) {
@@ -1387,7 +1402,7 @@ body.dark-mode .cool-tabs .tab-link:hover {
             updateCartDisplay();
             
             // Show notification
-            showNotification(`${productName} added to cart!`);
+            showNotification(`${productName} Added To Cart!`);
         }
 
         let buyNowProduct = null;
@@ -1513,8 +1528,39 @@ function submitBuyNowForm() {
                 showNotification("Your cart is empty!");
                 return;
             }
-            // Save the current cart as tempCart for checkout page
+            showOrderSummaryModal();
+        }
+
+        function showOrderSummaryModal() {
+            const modal = document.getElementById('orderSummaryModal');
+            const body = document.getElementById('orderSummaryBody');
+            let html = '<table style="width:100%;border-collapse:collapse;">';
+            html += '<tr><th style="text-align:left;">Product</th><th>Price</th><th>Qty</th><th>Total</th></tr>';
+            let grandTotal = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                grandTotal += itemTotal;
+                html += `<tr>
+                  <td>${item.name}</td>
+                  <td>Rs. ${item.price.toLocaleString()}</td>
+                  <td>${item.quantity}</td>
+                  <td>Rs. ${itemTotal.toLocaleString()}</td>
+                </tr>`;
+            });
+            html += `<tr style="font-weight:bold;"><td colspan="3" style="text-align:right;">Grand Total:</td><td>Rs. ${grandTotal.toLocaleString()}</td></tr>`;
+            html += '</table>';
+            body.innerHTML = html;
+            modal.classList.add('active');
+        }
+
+        function closeOrderSummaryModal() {
+            document.getElementById('orderSummaryModal').classList.remove('active');
+        }
+
+        function confirmOrderSummary() {
+            // Save cart and proceed
             localStorage.setItem('tempCart', JSON.stringify(cart));
+            closeOrderSummaryModal();
             window.location.href = 'checkout.html';
         }
 
@@ -1561,18 +1607,23 @@ function submitBuyNowForm() {
         // Dark mode toggle
 const darkModeToggle = document.getElementById('darkModeToggle');
 const darkModeClass = 'dark-mode';
+const htmlEl = document.documentElement;
 // On page load, set dark mode if saved
 if (localStorage.getItem('senzyDarkMode') === 'true') {
   document.body.classList.add(darkModeClass);
-  darkModeToggle.textContent = '☀️ Light Mode';
+  htmlEl.classList.add(darkModeClass);
+  darkModeToggle.textContent = '☀️';
 } else {
-  darkModeToggle.textContent = '🌙 Dark Mode';
+  document.body.classList.remove(darkModeClass);
+  htmlEl.classList.remove(darkModeClass);
+  darkModeToggle.textContent = '🌙';
 }
 darkModeToggle.addEventListener('click', function() {
   document.body.classList.toggle(darkModeClass);
+  htmlEl.classList.toggle(darkModeClass);
   const isDark = document.body.classList.contains(darkModeClass);
   localStorage.setItem('senzyDarkMode', isDark);
-  darkModeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+  darkModeToggle.textContent = isDark ? '☀️' : '🌙';
 });
     </script>
 
@@ -1857,6 +1908,7 @@ darkModeToggle.addEventListener('click', function() {
       </div>
     </div>
 
+    
     <style>
     @keyframes trackingSpin {
       0% { transform: rotate(-10deg) scale(1); }
