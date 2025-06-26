@@ -29,8 +29,17 @@
         </div>
     </nav>
     <main style="padding:40px 5%;text-align:center;min-height:60vh;">
-        <h1 class="blog-title">Welcome to the Senzy Blog</h1>
-        <p class="blog-desc">Stay tuned for updates, news, and articles from the Senzy team!</p>
+        <h1 class="blog-title">Welcome to the Senzy Blog <span style='font-size:1.2em;'>🚀✨</span></h1>
+        <p class="blog-desc" style="max-width:700px;margin:0 auto 36px auto;line-height:1.8;font-size:1.15rem;">
+            <span style="font-size:1.3em;">👋</span> Hello, Senzy family!<br><br>
+            At Senzy, we believe shopping is more than just a transaction—it's an experience, a journey, and a celebration of innovation, style, and community. Our blog is your front-row seat to the latest in tech, fashion, lifestyle, and exclusive behind-the-scenes stories from the heart of Senzy.<br><br>
+            <span style="font-size:1.2em;">📰</span> Here, you'll discover in-depth reviews of the hottest gadgets, expert tips to elevate your style, and wellness advice to help you live your best life. We bring you the latest trends, product launches, and special offers, all curated with love and a dash of Senzy magic.<br><br>
+            <span style="font-size:1.2em;">🌍</span> Our team is passionate about connecting with you—our vibrant community. Whether you're a tech enthusiast, a fashionista, or a health-conscious shopper, there's something here for everyone. Dive into our stories, join the conversation, and let your voice be heard!<br><br>
+            <span style="font-size:1.2em;">🎉</span> Stay tuned for giveaways, interviews with industry leaders, and inspiring customer spotlights. We’re here to empower, inform, and entertain you every step of the way.<br><br>
+            <span style="font-size:1.2em;">💡</span> Got a topic you want us to cover? Drop your ideas in the comments or reach out on social media. This blog is as much yours as it is ours—let’s shape the future of shopping together!<br><br>
+            <span style="font-size:1.2em;">💛</span> Thank you for being part of the Senzy journey. Happy reading, and remember: at Senzy, you’re always in style.<br><br>
+            <span style="font-size:1.2em;">👇</span> Scroll down to explore our latest features!
+        </p>
         <div class="blog-features">
             <div class="feature-card animate-pop">
                 <i class="fas fa-bolt"></i>
@@ -143,6 +152,94 @@
     body.dark-mode .feature-card h2 { color: #ffd54f; }
     body.dark-mode .feature-card p { color: #ffd54f; }
     body.dark-mode .feature-card i { color: #ffd54f; }
+    </style>
+    <script>
+    // Dark mode toggle logic
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        // Save preference
+        if(document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('senzy-darkmode', 'on');
+        } else {
+            localStorage.setItem('senzy-darkmode', 'off');
+        }
+    }
+    // On load, set dark mode if previously chosen
+    window.addEventListener('DOMContentLoaded', function() {
+        if(localStorage.getItem('senzy-darkmode') === 'on') {
+            document.body.classList.add('dark-mode');
+        }
+    });
+    </script>
+    <button id="darkModeToggle" onclick="toggleDarkMode()" style="position:fixed;bottom:32px;right:32px;z-index:1000;background:#ffd54f;color:#232323;border:none;border-radius:50%;width:54px;height:54px;box-shadow:0 2px 12px #0003;cursor:pointer;font-size:1.5em;transition:background 0.3s, color 0.3s;">
+        <span id="darkModeIcon">🌙</span>
+    </button>
+    <script>
+    // Animate dark mode button and icon
+    const darkBtn = document.getElementById('darkModeToggle');
+    const darkIcon = document.getElementById('darkModeIcon');
+    function updateDarkIcon() {
+        if(document.body.classList.contains('dark-mode')) {
+            darkIcon.textContent = '☀️';
+            darkBtn.style.background = '#232323';
+            darkBtn.style.color = '#ffd54f';
+        } else {
+            darkIcon.textContent = '🌙';
+            darkBtn.style.background = '#ffd54f';
+            darkBtn.style.color = '#232323';
+        }
+    }
+    darkBtn.addEventListener('mouseenter', () => {
+        darkBtn.animate([
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.13) rotate(-8deg)' },
+            { transform: 'scale(1)' }
+        ], { duration: 400 });
+    });
+    document.addEventListener('DOMContentLoaded', updateDarkIcon);
+    darkBtn.addEventListener('click', () => {
+        setTimeout(updateDarkIcon, 200);
+    });
+    // Listen for dark mode changes
+    const observer = new MutationObserver(updateDarkIcon);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    </script>
+    <style>
+    /* Custom dark mode styles and button animation */
+    body.dark-mode {
+        background: #181818 !important;
+        color: #ffd54f !important;
+        transition: background 0.5s cubic-bezier(.68,-0.55,.27,1.55), color 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    body.dark-mode .navbar, body.dark-mode nav {
+        background: #232323 !important;
+        box-shadow: 0 2px 16px #000a;
+    }
+    body.dark-mode .nav-links .tab-link {
+        color: #ffd54f !important;
+        background: transparent !important;
+        transition: color 0.3s;
+    }
+    body.dark-mode .nav-links .tab-link:hover {
+        color: #fffbe6 !important;
+        background: #ffd54f22 !important;
+    }
+    body.dark-mode main {
+        background: #181818 !important;
+        color: #ffd54f !important;
+        transition: background 0.5s, color 0.5s;
+    }
+    body.dark-mode .footer {
+        background: #232323 !important;
+        color: #ffd54f !important;
+    }
+    #darkModeToggle {
+        animation: popIn 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    #darkModeToggle:active {
+        transform: scale(0.93) rotate(6deg);
+        transition: transform 0.2s;
+    }
     </style>
     <footer class="footer">
         <div class="footer-bottom">

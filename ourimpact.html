@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzy - Our Impact!</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+        background: #f4f6fa;
+        color: #222;
+        transition: background 0.3s, color 0.3s;
+      }
+      .ourimpact-section {
+        background: #fff;
+        color: #222;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px #0001;
+        transition: background 0.3s, color 0.3s;
+      }
+      .main-heading {
+        color: #2c3e50;
+        transition: color 0.3s;
+      }
+      .sub-heading {
+        color: #3498db;
+        transition: color 0.3s;
+      }
+      .ourimpact-section p {
+        color: #222;
+        transition: color 0.3s;
+      }
+      .dark-mode body {
+        background: #181c24;
+        color: #e0e6ef;
+      }
+      .dark-mode .ourimpact-section {
+        background: #232a36 !important;
+        color: #e0e6ef !important;
+      }
+      .dark-mode .main-heading {
+        color: #f7ca18 !important;
+      }
+      .dark-mode .sub-heading {
+        color: #7ed6df !important;
+      }
+      .dark-mode .ourimpact-section p {
+        color: #e0e6ef !important;
+      }
+      .dark-mode .emoji {
+        filter: brightness(1.2);
+      }
+      .dark-mode .nav-links a {
+        color: #e0e6ef;
+      }
+      .dark-mode .nav-links a.tab-link.active {
+        background: #232a36;
+        color: #f7ca18;
+      }
+      /* Toggle Button */
+      .dark-toggle-btn {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: #232a36;
+        color: #f7ca18;
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 2px 8px #0002;
+        transition: background 0.2s, color 0.2s;
+      }
+      .dark-mode .dark-toggle-btn {
+        background: #f7ca18;
+        color: #232a36;
+      }
+    </style>
+</head>
+<body>
+    <button class="dark-toggle-btn" onclick="toggleDarkMode()" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/index.html" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search For Products...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ending here -->
+
+    <!-- Animated Our Impact Section -->
+    <section class="ourimpact-section fade-in" style="max-width:700px;margin:48px auto 0 auto;padding:36px 28px 32px 28px;background:#fff;border-radius:16px;box-shadow:0 4px 24px #0001;text-align:center;">
+        <h1 class="main-heading bounce" style="font-size:2.4rem;margin-bottom:18px;">🌱 Our Impact</h1>
+        <h2 class="sub-heading slide-in" style="font-size:1.5rem;margin-bottom:10px;"><span class="emoji">🌍</span> Making a Difference</h2>
+        <p style="font-size:1.1rem;margin-bottom:22px;">At Senzy, we believe in creating positive change for our customers, communities, and the environment. Our commitment goes beyond products—we strive to empower people and support sustainable practices every step of the way.</p>
+        <h2 class="sub-heading slide-in" style="font-size:1.5rem;margin-bottom:10px;"><span class="emoji">🤝</span> Community First</h2>
+        <p style="font-size:1.1rem;margin-bottom:22px;">We partner with local businesses, support charitable initiatives, and invest in programs that uplift those around us. Every purchase you make helps us give back and build a brighter future together.</p>
+        <h2 class="sub-heading slide-in" style="font-size:1.5rem;margin-bottom:10px;"><span class="emoji">💡</span> Innovation for Good</h2>
+        <p style="font-size:1.1rem;margin-bottom:0;">From eco-friendly packaging to digital innovation, we are always looking for ways to reduce our footprint and improve lives. Join us on our journey to make a lasting impact—one order at a time!</p>
+    </section>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark-mode');
+        // Save preference
+        if(document.documentElement.classList.contains('dark-mode')) {
+          localStorage.setItem('senzy-dark-mode', '1');
+        } else {
+          localStorage.removeItem('senzy-dark-mode');
+        }
+      }
+      // On load, check preference
+      if(localStorage.getItem('senzy-dark-mode')) {
+        document.documentElement.classList.add('dark-mode');
+      }
+    </script>
+</body>
+</html>

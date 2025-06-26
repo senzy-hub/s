@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzy - Our Team</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+        background: #f4f6fa;
+        color: #222;
+        transition: background 0.3s, color 0.3s;
+      }
+      .ourteam-section {
+        background: #fff;
+        color: #222;
+        border-radius: 16px;
+        box-shadow: 0 4px 24px #0001;
+        transition: background 0.3s, color 0.3s;
+      }
+      .main-heading {
+        color: #2c3e50;
+        transition: color 0.3s;
+      }
+      .sub-heading {
+        color: #3498db;
+        transition: color 0.3s;
+      }
+      .ourteam-section p, .team-quote, .quote-author {
+        color: #222;
+        transition: color 0.3s;
+      }
+      .team-quote {
+        background: #f7f9fa;
+        border: 1.5px solid #3498db;
+        border-left: 5px solid #3498db;
+        margin: 18px auto;
+        padding: 18px 24px;
+        border-radius: 10px;
+        font-style: italic;
+        color: #2c3e50;
+        box-shadow: 0 2px 8px #0001;
+        max-width: 600px;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+      }
+      .quote-author {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #888;
+        font-style: normal;
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+      .dark-mode body {
+        background: #181c24;
+        color: #e0e6ef;
+      }
+      .dark-mode .ourteam-section {
+        background: #232a36 !important;
+        color: #e0e6ef !important;
+      }
+      .dark-mode .main-heading {
+        color: #f7ca18 !important;
+      }
+      .dark-mode .sub-heading {
+        color: #7ed6df !important;
+      }
+      .dark-mode .ourteam-section p, .dark-mode .team-quote, .dark-mode .quote-author {
+        color: #e0e6ef !important;
+      }
+      .dark-mode .emoji {
+        filter: brightness(1.2);
+      }
+      .dark-mode .nav-links a {
+        color: #e0e6ef;
+      }
+      .dark-mode .nav-links a.tab-link.active {
+        background: #232a36;
+        color: #f7ca18;
+      }
+      /* Toggle Button */
+      .dark-toggle-btn {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: #232a36;
+        color: #f7ca18;
+        border: none;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1000;
+        box-shadow: 0 2px 8px #0002;
+        transition: background 0.2s, color 0.2s;
+      }
+      .dark-mode .dark-toggle-btn {
+        background: #f7ca18;
+        color: #232a36;
+      }
+      .dark-mode .team-quote {
+        background: #232a36 !important;
+        color: #f7ca18 !important;
+        border: 1.5px solid #f7ca18 !important;
+        border-left: 5px solid #f7ca18 !important;
+      }
+      .dark-mode .quote-author {
+        color: #7ed6df !important;
+      }
+    </style>
+</head>
+<body>
+    <button class="dark-toggle-btn" onclick="toggleDarkMode()" title="Toggle dark mode"><i class="fas fa-moon"></i></button>
+    <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/index.html" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search For Products...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ending here -->
+
+    <!-- Animated Our Team Section -->
+    <section class="ourteam-section fade-in" style="max-width:700px;margin:48px auto 0 auto;padding:36px 28px 32px 28px;background:#fff;border-radius:16px;box-shadow:0 4px 24px #0001;text-align:center;">
+        <h1 class="main-heading bounce gradient-text" style="font-size:2.4rem;margin-bottom:18px;">👥 Meet Our Team</h1>
+        <h2 class="sub-heading slide-in gradient-text" style="font-size:1.5rem;margin-bottom:10px;"><span class="emoji">🚀</span> Our Visionaries</h2>
+        <p class="fade-in stagger-1">At Senzy, our team is the heartbeat of our company. We are a diverse group of passionate individuals, each bringing unique skills, backgrounds, and perspectives to the table. Our journey began with a simple idea: to revolutionize the online shopping experience in Pakistan and beyond. Today, that idea has blossomed into a thriving platform, thanks to the dedication, creativity, and relentless drive of our team members.</p>
+        <p class="fade-in stagger-2">Our founders envisioned a marketplace that not only offered the best products but also fostered a sense of community and trust. From the earliest days, they worked tirelessly to build a company culture rooted in innovation, transparency, and customer-centricity. Their leadership continues to inspire every member of the Senzy family to push boundaries and strive for excellence.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">💡</span> Innovation at Every Level</h2>
+        <p class="fade-in stagger-3">Innovation is at the core of everything we do. Our product development team is constantly exploring new technologies, trends, and customer needs to ensure that Senzy remains at the forefront of the e-commerce industry. Whether it’s implementing advanced search algorithms, enhancing our user interface, or introducing eco-friendly packaging, our team is always looking for ways to improve and evolve.</p>
+        <p class="fade-in stagger-4">We believe that great ideas can come from anyone, anywhere. That’s why we encourage open communication, brainstorming sessions, and cross-functional collaboration. Our engineers, designers, marketers, and customer support specialists work hand-in-hand to turn ideas into reality, creating a seamless and enjoyable shopping experience for our users.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">🌍</span> Diversity & Inclusion</h2>
+        <p class="fade-in stagger-5">Senzy is proud to be a melting pot of cultures, backgrounds, and talents. We believe that diversity is our strength, enabling us to better understand and serve our customers from all walks of life. Our team includes individuals from different regions, age groups, and professional backgrounds, each contributing their unique voice to our collective mission.</p>
+        <p class="fade-in stagger-6">We are committed to fostering an inclusive environment where everyone feels valued, respected, and empowered to succeed. Our hiring practices prioritize equal opportunity, and we actively support initiatives that promote gender equality, accessibility, and social responsibility within our organization and the wider community.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">🤝</span> Collaboration & Teamwork</h2>
+        <p class="fade-in stagger-7">Teamwork is the foundation of our success. At Senzy, we believe that the best results are achieved when people work together towards a common goal. Our collaborative spirit is evident in every project, from launching new product lines to organizing community outreach programs. We celebrate our wins together and support each other through challenges, knowing that our collective strength is greater than the sum of our parts.</p>
+        <p class="fade-in stagger-8">Regular team-building activities, workshops, and social events help us build strong relationships and foster a sense of belonging. We encourage feedback, recognize achievements, and provide opportunities for professional growth and development. Our open-door policy ensures that every team member has a voice and can contribute to the company’s direction.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">🎯</span> Customer-Centric Approach</h2>
+        <p class="fade-in stagger-9">Our customers are at the heart of everything we do. Every department at Senzy, from product development to customer support, is dedicated to understanding and exceeding customer expectations. We listen to feedback, analyze trends, and continuously refine our offerings to ensure that we deliver value, quality, and satisfaction with every interaction.</p>
+        <p class="fade-in stagger-10">Our customer support team is available around the clock to assist with inquiries, resolve issues, and provide guidance. We invest in training and resources to ensure that our team members have the knowledge and tools they need to deliver exceptional service. Our goal is to build lasting relationships with our customers, earning their trust and loyalty through transparency, reliability, and care.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">🌱</span> Social Responsibility</h2>
+        <p class="fade-in stagger-11">Senzy is committed to making a positive impact on society and the environment. Our team actively participates in charitable initiatives, sustainability projects, and community outreach programs. We believe that businesses have a responsibility to give back and contribute to the greater good.</p>
+        <p class="fade-in stagger-12">From reducing our carbon footprint to supporting local artisans and entrepreneurs, we strive to make a difference in every aspect of our operations. Our team members volunteer their time and expertise to support causes they are passionate about, and we regularly organize campaigns to raise awareness and funds for important issues.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">📈</span> Growth & Learning</h2>
+        <p class="fade-in stagger-13">Continuous learning is a core value at Senzy. We provide our team with access to training, workshops, and educational resources to help them grow both personally and professionally. Our mentorship programs pair experienced leaders with emerging talent, fostering a culture of knowledge sharing and mutual support.</p>
+        <p class="fade-in stagger-14">We encourage curiosity, experimentation, and a growth mindset. Mistakes are seen as opportunities to learn and improve, and we celebrate the achievements of our team members as they reach new milestones in their careers. Our commitment to growth extends beyond our company, as we strive to inspire and empower the next generation of innovators and leaders.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">🏆</span> Celebrating Success</h2>
+        <p class="fade-in stagger-15">At Senzy, we believe in recognizing and celebrating the hard work and achievements of our team. Regular awards, shout-outs, and appreciation events help us acknowledge the contributions of individuals and teams who go above and beyond. We believe that a culture of recognition fosters motivation, engagement, and a sense of pride in our work.</p>
+        <p class="fade-in stagger-16">Our success is a testament to the dedication, talent, and passion of our team members. We are grateful for their commitment and excited for the future as we continue to grow and evolve together.</p>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">💬</span> Voices of Senzy</h2>
+        <p class="fade-in stagger-17">Don’t just take our word for it—hear from our team members themselves! Here are a few testimonials from the people who make Senzy special:</p>
+        <div class="team-quotes">
+            <blockquote class="team-quote fade-in stagger-18">“Working at Senzy has been a transformative experience. I’ve grown so much professionally and personally, and I’m proud to be part of a team that truly cares about its people and customers.”<br><span class="quote-author">– Riaz, Product Manager</span></blockquote>
+            <blockquote class="team-quote fade-in stagger-19">“The collaborative culture at Senzy is unlike anything I’ve experienced before. Everyone is supportive, creative, and driven to make a difference.”<br><span class="quote-author">– Senzy, Owner</span></blockquote>
+            <blockquote class="team-quote fade-in stagger-20">“Senzy’s commitment to innovation and social responsibility inspires me every day. I love being part of a company that values diversity and gives back to the community.”<br><span class="quote-author">– Kashif, Marketing Specialist</span></blockquote>
+        </div>
+        <h2 class="sub-heading slide-in gradient-text"><span class="emoji">🌟</span> Join Our Team</h2>
+        <p class="fade-in stagger-21">If you’re passionate about making a difference, eager to learn, and ready to be part of a dynamic, forward-thinking team, Senzy is the place for you. We are always looking for talented individuals who share our values and vision. Explore our career opportunities and join us on our mission to shape the future of online shopping!</p>
+        <p class="fade-in stagger-22">Together, we are more than just a team—we are a family. Thank you for taking the time to learn about the people behind Senzy. We look forward to welcoming you to our community!</p>
+    </section>
+    <script>
+      function toggleDarkMode() {
+        document.documentElement.classList.toggle('dark-mode');
+        // Save preference
+        if(document.documentElement.classList.contains('dark-mode')) {
+          localStorage.setItem('senzy-dark-mode', '1');
+        } else {
+          localStorage.removeItem('senzy-dark-mode');
+        }
+      }
+      // On load, check preference
+      if(localStorage.getItem('senzy-dark-mode')) {
+        document.documentElement.classList.add('dark-mode');
+      }
+    </script>
+</body>
+</html>

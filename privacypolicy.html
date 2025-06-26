@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to your custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Custom dark mode CSS for privacy policy page only -->
+    <style>
+      body.dark-mode {
+        background: #181a1b !important;
+        color: #f1f1f1 !important;
+      }
+      body.dark-mode .privacy-policy-container {
+        background: #23272e !important;
+        color: #f1f1f1 !important;
+      }
+      body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+        color: #ffe082 !important;
+      }
+      body.dark-mode a {
+        color: #80cbc4 !important;
+      }
+      body.dark-mode ul, body.dark-mode li, body.dark-mode p {
+        color: #f1f1f1 !important;
+      }
+      body.dark-mode button#darkModeToggle {
+        background: #23272e !important;
+        color: #ffe082 !important;
+        border: 1px solid #444 !important;
+      }
+      /* Fix yellow/gradient backgrounds in dark mode for privacy policy */
+      body.dark-mode .privacy-policy-container h2 {
+        background: none !important;
+        color: #ffe082 !important;
+        padding: 0;
+        border-radius: 0;
+        margin-top: 32px;
+      }
+      body.dark-mode .privacy-policy-container {
+        box-shadow: 0 0 24px #000a;
+      }
+      body.dark-mode .privacy-policy-container ul li {
+        background: none !important;
+        color: #f1f1f1 !important;
+      }
+      body.dark-mode .privacy-policy-container h1 {
+        color: #ffeb3b !important;
+        background: transparent !important;
+        text-shadow: 0 2px 8px #f5f5f5, 0 1px 0 #e4e012;
+        font-weight: 900;
+        letter-spacing: 2px;
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 18px;
+      }
+      body.dark-mode .privacy-policy-container {
+        border-radius: 16px;
+      }
+    </style>
+</head>
+<body>
+     <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/index.html" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search For Products...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ending here -->
+    <main class="privacy-policy-container">
+        <h1>Privacy Policy</h1>
+        <p>Your privacy is important to us. This Privacy Policy explains how Senzy collects, uses, and protects your personal information when you use our website.</p>
+        <h2>Information We Collect</h2>
+        <ul>
+            <li>Personal identification information (Name, email address, phone number, etc.)</li>
+            <li>Usage data and cookies</li>
+        </ul>
+        <h2>How We Use Your Information</h2>
+        <ul>
+            <li>To provide and maintain our service</li>
+            <li>To improve our website and services</li>
+            <li>To communicate with you</li>
+            <li>To comply with legal obligations</li>
+        </ul>
+        <h2>Security</h2>
+        <p>We are committed to ensuring that your information is secure. We use suitable procedures to safeguard and secure the information we collect online.</p>
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy, please contact us at permnent5939@gmail.com.</p>
+    </main>
+    <!-- Dark Mode Toggle Button -->
+    <button id="darkModeToggle" title="Toggle dark mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script>
+    // Placeholder functions to prevent errors if not defined elsewhere
+    function searchProducts() {}
+    function openCart() {}
+
+    // Dark mode toggle logic
+    const toggleBtn = document.getElementById('darkModeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-mode');
+    }
+    toggleBtn.onclick = function() {
+        document.body.classList.toggle('dark-mode');
+        if(document.body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            localStorage.setItem('theme', 'light');
+            toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    };
+    // Set correct icon on load
+    if(document.body.classList.contains('dark-mode')) {
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+    </script>
+</body>
+</html>

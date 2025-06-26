@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senzy - CheckOut</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="png" href="senzy.png">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar sticky-navbar cool-navbar">
+        <div class="nav-top">
+            <div class="nav-logo">
+                <a href="profile.html"><i class="fas fa-user-circle profile-icon"></i></a>
+                <a href="/" class="brand-name">Senzy</a>
+            </div>
+            <div class="nav-search cool-search">
+                <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search For Products...">
+                <button onclick="searchProducts()" class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="nav-actions">
+                <a href="login.html"><i class="fas fa-user"></i> Login</a>
+                <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
+            </div>
+        </div>
+        <div class="nav-bottom">
+            <ul class="nav-links cool-tabs">
+                <li><a href="/" class="tab-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="electronics.html" class="tab-link"><i class="fas fa-tv"></i> Electronics</a></li>
+                <li><a href="fashion.html" class="tab-link"><i class="fas fa-film"></i> 4K Video</a></li>
+                <li><a href="groceries.html" class="tab-link"><i class="fas fa-image"></i> 4K Pictures</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+    <!-- navbar ended here -->
+
+    <main style="max-width:600px;margin:48px auto 0 auto;padding:32px 18px 24px 18px;background:#fff;border-radius:12px;box-shadow:0 4px 24px #0001;text-align:center;">
+        <h1 style="color:#2c3e50;font-size:2rem;margin-bottom:18px;">🛒 Review Your Cart & Complete Your Order</h1>
+        <div id="checkoutCartSummary" style="margin-bottom:28px;"></div>
+        <p style="font-size:1.1rem;color:#222;margin:18px 0 8px 0;">
+          <strong>How to complete your purchase:</strong><br>
+          1. Review your selected items above.<br>
+          2. If you want to add more, click <b>Back to Shop</b>.<br>
+          3. If you’re ready, click <b>Place Order</b> below and fill in your delivery details.
+        </p>
+        <button style="background:#27ae60;color:#fff;padding:12px 32px;border:none;border-radius:6px;font-weight:600;font-size:1.1rem;cursor:pointer;margin-bottom:12px;" onclick="proceedToDetails()">Place Order</button>
+        <a href="index.html" style="display:inline-block;margin:12px 0 0 0;padding:12px 32px;background:#3498db;color:#fff;border-radius:6px;font-weight:600;font-size:1.1rem;text-decoration:none;transition:background 0.2s;">Back to Shop</a>
+        <div style="margin-top:32px;color:#888;font-size:1rem;">
+            <i class="fas fa-info-circle"></i> If you have a special request, contact us at <a href="mailto:permnent5939@gmail.com" style="color:#e74c3c;">permnent5939@gmail.com</a>
+        </div>
+    </main>
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+    (function(){
+      // Updated for EmailJS v3+ (use publicKey)
+      emailjs.init({ publicKey: "FXf1p-pPj31i3ZQOg" }); // Replace with your EmailJS public key if different
+    })();
+    </script>
+    <script>
+    // Show cart summary from localStorage (tempCart)
+    function renderCheckoutCartSummary() {
+      const cart = JSON.parse(localStorage.getItem('tempCart') || '[]');
+      const container = document.getElementById('checkoutCartSummary');
+      if (!cart.length) {
+        container.innerHTML = '<div style="color:#e74c3c;font-weight:600;">Your cart is empty.</div>';
+        return;
+      }
+      let html = '<table style="width:100%;border-collapse:collapse;margin-bottom:12px;">';
+      html += '<tr><th style="text-align:left;padding:6px 0;">Product</th><th>Price</th><th>Qty</th><th>Total</th></tr>';
+      let grandTotal = 0;
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        grandTotal += itemTotal;
+        html += `<tr><td style="padding:6px 0;">${item.name}</td><td>Rs. ${item.price.toLocaleString()}</td><td>${item.quantity}</td><td>Rs. ${itemTotal.toLocaleString()}</td></tr>`;
+      });
+      html += `<tr style="font-weight:bold;"><td colspan="3" style="text-align:right;padding-top:8px;">Grand Total:</td><td style="padding-top:8px;">Rs. ${grandTotal.toLocaleString()}</td></tr>`;
+      html += '</table>';
+      container.innerHTML = html;
+    }
+    document.addEventListener('DOMContentLoaded', renderCheckoutCartSummary);
+    function proceedToDetails() {
+      const cart = JSON.parse(localStorage.getItem('tempCart') || '[]');
+      if (!cart.length) {
+        alert('Your cart is empty. Please add items before placing an order.');
+        return;
+      }
+      // Prepare order details
+      let orderDetails = cart.map(item => `${item.name} (x${item.quantity}) - Rs. ${item.price * item.quantity}`).join('\n');
+      let grandTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      // Send email via EmailJS
+      emailjs.send("service_38jckif", "template_k8e51p9", {
+        to_email: "nepalserver5939@gmail.com",
+        order: orderDetails,
+        total: grandTotal
+      }).then(function(response) {
+        localStorage.removeItem('cart');
+        localStorage.removeItem('tempCart');
+        document.getElementById('checkoutCartSummary').innerHTML = '<div style="color:#27ae60;font-weight:600;font-size:1.2rem;">✅ Your order has been placed successfully!<br>Thank you for shopping with Senzy.</div>';
+        document.querySelector('button[onclick="proceedToDetails()"]')?.remove();
+        document.querySelector('a[href="index.html"]')?.style.setProperty('margin-top', '24px');
+        alert('Order placed! You will receive confirmation soon.');
+      }, function(error) {
+        alert('Failed to send order. Error: ' + JSON.stringify(error));
+        console.error('EmailJS error:', error);
+      });
+    }
+    </script>
+</body>
+</html>

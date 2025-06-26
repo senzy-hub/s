@@ -24,7 +24,7 @@
             <div class="nav-actions">
                 <a href="login.html"><i class="fas fa-user"></i> Login</a>
                 <a href="javascript:void(0);" onclick="openCart()"><i class="fas fa-shopping-cart"></i> Cart <span id="cartCount">0</span></a>
-                <button id="darkModeToggle" title="Toggle dark mode" style="margin-left:12px; background:none; border:none; color:inherit; font-size:20px; cursor:pointer;"><i class="fas fa-moon"></i></button>
+                <!-- Dark mode button removed from here -->
             </div>
         </div>
         <div class="nav-bottom">
@@ -38,6 +38,9 @@
     </nav>
     <!-- END: Navbar -->
 
+    <!-- Dark Mode Button (moved to lower left) -->
+<button id="darkModeToggle" title="Toggle dark mode" style="position:fixed;bottom:24px;left:24px;z-index:9999;background:none;border:none;color:inherit;font-size:20px;cursor:pointer;box-shadow:0 2px 8px #0002;border-radius:50%;width:56px;height:56px;display:flex;align-items:center;justify-content:center;transition:background 0.2s, color 0.2s;"><i class="fas fa-moon"></i></button>
+
     <!-- Blank content area -->
  <!-- Product Grid -->
 <section class="products">
@@ -46,18 +49,7 @@
 
     <!-- Product 1 -->
     <div class="product-card">
-      <img src="smartwatch.jpg" alt="1st Product">
-      <h3 class="product-title">Smart Watch</h3>
-      <p class="price">Rs. 2800<span class="old-price">Rs. 4500</span></p>
-      <div class="button-group">
-        <button onclick="addToCart('Smart Watch', 2800, 'smartwatch.jpg')">Add to Cart</button>
-        <button>Buy Now</button>
-      </div>
-    </div>
-
-    <!-- Product 2 -->
-    <div class="product-card">
-      <img src="s24.jpg" alt="2nd Product">
+      <img src="s24.jpg" alt="Samsung S24 Ultra">
       <h3 class="product-title">Samsung S24 Ultra</h3>
       <p class="price">Rs. 450,000<span class="old-price">Rs. 475,000</span></p>
       <div class="button-group">
@@ -66,71 +58,79 @@
       </div>
     </div>
 
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="iphone12.jpg" alt="iPhone 12">
+      <h3 class="product-title">iPhone 12</h3>
+      <p class="price">Rs. 275,000<span class="old-price">Rs. 300,000</span></p>
+      <div class="button-group">
+        <button onclick="addToCart('iPhone 12', 275000, 'iphone12.jpg')">Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
     <!-- Product 3 -->
     <div class="product-card">
-      <img src="3hp.jpg" alt="3rd Product">
-      <h3 class="product-title">HeadPhones 3 in 1</h3>
-      <p class="price">Rs. 7899<span class="old-price">Rs. 9500</span></p>
+      <img src="redmi.jpg" alt="Redmi Note 14 Pro">
+      <h3 class="product-title">Redmi Note 14 Pro</h3>
+      <p class="price">Rs. 66,000<span class="old-price">Rs. 70,000</span></p>
       <div class="button-group">
-        <button onclick="addToCart('3 Headphones', 7899, '3hp.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Redmi Note 14 Pro', 66000, 'redmi.jpg')">Add to Cart</button>
         <button>Buy Now</button>
       </div>
     </div>
 
     <!-- Product 4 -->
     <div class="product-card">
-      <img src="sonycamera.jpg" alt="4th Product">
-      <h3 class="product-title">Sony Camera</h3>
-      <p class="price">Rs. 9000<span class="old-price">Rs. 9500</span></p>
-      <div class="button-group">
-        <button onclick="addToCart('Sony Camera', 9000, 'sonycamera.jpg')">Add to Cart</button>
-        <button>Buy Now</button>
-      </div>
-    </div>
- 
- 
-    <!-- Product 5 -->
-    <div class="product-card">
-      <img src="a15.jpg" alt="5th Product">
+      <img src="a15.jpg" alt="Samsung Galaxy A15">
       <h3 class="product-title">Samsung Galaxy A15</h3>
       <p class="price">Rs. 65,000<span class="old-price">Rs. 80,000</span></p>
       <div class="button-group">
-        <button onclick="addToCart('Samung Galaxy A15', 65000, 'a15.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Samsung Galaxy A15', 65000, 'a15.jpg')">Add to Cart</button>
         <button>Buy Now</button>
       </div>
     </div>
- 
-  
-  
-<!-- Product 6 -->
+
+    <!-- Product 5 -->
     <div class="product-card">
-      <img src="smartwatch1.jpg" alt="6th Product">
+      <img src="smartwatch.jpg" alt="Smart Watch">
       <h3 class="product-title">Smart Watch</h3>
+      <p class="price">Rs. 2,800<span class="old-price">Rs. 4,500</span></p>
+      <div class="button-group">
+        <button onclick="addToCart('Smart Watch', 2800, 'smartwatch.jpg')">Add to Cart</button>
+        <button>Buy Now</button>
+      </div>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+      <img src="smartwatch1.jpg" alt="Smart Watch 2">
+      <h3 class="product-title">Smart Watch 2</h3>
       <p class="price">Rs. 3,300<span class="old-price">Rs. 4,500</span></p>
       <div class="button-group">
-        <button onclick="addToCart('Smart Watch', 3300, 'smartwatch1.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Smart Watch 2', 3300, 'smartwatch1.jpg')">Add to Cart</button>
         <button>Buy Now</button>
       </div>
     </div>
-  
-<!-- Product 7 -->
+
+    <!-- Product 7 -->
     <div class="product-card">
-      <img src="iphone12.jpg" alt="7th Product">
-      <h3 class="product-title">Iphone 12</h3>
-      <p class="price">275,000<span class="old-price">Rs. 300,000</span></p>
+      <img src="3hp.jpg" alt="Headphones 3 in 1">
+      <h3 class="product-title">Headphones 3 in 1</h3>
+      <p class="price">Rs. 7,899<span class="old-price">Rs. 9,500</span></p>
       <div class="button-group">
-        <button onclick="addToCart('Iphone 12', 275000, 'iphone12.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Headphones 3 in 1', 7899, '3hp.jpg')">Add to Cart</button>
         <button>Buy Now</button>
       </div>
     </div>
 
     <!-- Product 8 -->
     <div class="product-card">
-      <img src="redmi.jpg" alt="8th Product">
-      <h3 class="product-title">Redmi Note 14 Pro</h3>
-      <p class="price">Rs. 66,000<span class="old-price">Rs. 70,000</span></p>
+      <img src="sonycamera.jpg" alt="Sony Camera">
+      <h3 class="product-title">Sony Camera</h3>
+      <p class="price">Rs. 9,000<span class="old-price">Rs. 9,500</span></p>
       <div class="button-group">
-        <button onclick="addToCart('Redmi Note 14 Pro', 66000, 'redmi.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Sony Camera', 9000, 'sonycamera.jpg')">Add to Cart</button>
         <button>Buy Now</button>
       </div>
     </div>
@@ -146,6 +146,30 @@
 
 
 </section>
+
+<!-- AI Chatbot Floating Button and Chat Window -->
+<div id="chatbot-fab" style="position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--senzy-accent,#ffd54f);color:#23243a;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px #0002;cursor:pointer;font-size:28px;">
+  <i class="fas fa-comment-dots"></i>
+</div>
+<div id="chatbot-window" class="animated-chatbot" style="display:none;position:fixed;bottom:90px;right:24px;width:520px;max-width:98vw;height:520px;max-height:90vh;background:#fff;border-radius:16px;box-shadow:0 4px 24px #0003;z-index:10000;flex-direction:column;overflow:hidden;resize:both;min-width:320px;min-height:320px;">
+  <div id="chatbot-header" style="cursor:move;background:var(--senzy-accent,#ffd54f);color:#23243a;padding:12px 16px;font-weight:bold;display:flex;align-items:center;justify-content:space-between;user-select:none;font-size: 1.25rem;">
+    <span>Senzy AI Chatbot</span>
+    <button id="chatbot-close" style="background:none;border:none;font-size:20px;cursor:pointer;color:#23243a;">&times;</button>
+  </div>
+  <div id="chatbot-messages" style="padding:12px;height:370px;overflow-y:auto;font-size:15px;background:#f8f8f8;flex: 1 1 auto;min-height: 180px;max-height: 75vh;height: auto !important;font-size: 1.15rem !important;line-height: 1.7;"></div>
+  <form id="chatbot-form" style="display:flex;border-top:1px solid #eee;">
+    <input id="chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" style="flex:1;padding:10px;border:none;font-size:15px;outline:none;font-size: 1.15rem !important;padding: 16px 12px !important;min-height: 48px;">
+    <button type="submit" style="background:var(--senzy-accent,#ffd54f);color:#23243a;border:none;padding:0 18px;font-size:18px;cursor:pointer;font-size: 1.15rem !important;padding: 0 28px !important;min-height: 48px;">Send</button>
+  </form>
+  <!-- Audio player for the requested song (audio only) -->
+  <div style="width:100%;background:#fffbe6;border-top:1px solid #ffe082;padding:8px 0 4px 0;display:flex;align-items:center;justify-content:center;">
+    <audio controls style="width:90%;outline:none;border-radius:8px;">
+      <!-- if you want to change audio in the ai chat box senzyyyyyyy -->
+      <source src="jhol.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</div>
 
 <script>
 function searchProducts() {
@@ -186,12 +210,243 @@ function updateDarkModeIcon() {
   }
 }
 updateDarkModeIcon();
+
+// --- Cart Functionality (from index.html) ---
+let cart = [];
+let cartCount = 0;
+
+// Load cart from localStorage if available
+if (localStorage.getItem('cart')) {
+  cart = JSON.parse(localStorage.getItem('cart'));
+  updateCartCount();
+}
+
+function addToCart(productName, price, image) {
+  const existingItem = cart.find(item => item.name === productName);
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    cart.push({ name: productName, price: price, quantity: 1, image: image });
+  }
+  updateCartCount();
+  saveCart();
+  showNotification(`${productName} Added To Cart!`);
+}
+function updateCartCount() {
+  cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const cartCountElem = document.getElementById('cartCount');
+  if (cartCountElem) cartCountElem.textContent = cartCount;
+}
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+function showNotification(message) {
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  notification.style.position = 'fixed';
+  notification.style.bottom = '20px';
+  notification.style.left = '50%';
+  notification.style.transform = 'translateX(-50%)';
+  notification.style.backgroundColor = '#333';
+  notification.style.color = 'white';
+  notification.style.padding = '12px 24px';
+  notification.style.borderRadius = '4px';
+  notification.style.fontSize = '1.1rem';
+  notification.style.zIndex = 9999;
+  setTimeout(() => notification.remove(), 1800);
+}
+
+// --- AI Chatbot Logic ---
+const chatbotFab = document.getElementById('chatbot-fab');
+const chatbotWindow = document.getElementById('chatbot-window');
+const chatbotClose = document.getElementById('chatbot-close');
+const chatbotForm = document.getElementById('chatbot-form');
+const chatbotInput = document.getElementById('chatbot-input');
+const chatbotMessages = document.getElementById('chatbot-messages');
+
+function appendChatMessage(text, sender) {
+  const msg = document.createElement('div');
+  msg.style.margin = '8px 0';
+  msg.style.textAlign = sender === 'user' ? 'right' : 'left';
+  msg.innerHTML = `<span style="display:inline-block;padding:7px 14px;border-radius:16px;max-width:80%;background:${sender==='user'?'#ffd54f':'#e0e0e0'};color:${sender==='user'?'#23243a':'#222'};">${text}</span>`;
+  chatbotMessages.appendChild(msg);
+  chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+}
+
+function chatbotReply(userMsg) {
+  // Convert to lowercase and remove ?, ,, ., ', ", ( and ) for matching
+  const msg = userMsg.toLowerCase().replace(/[\?,\.\'"\(\)]/g, '');
+  // Simple rule-based demo responses
+  if (msg.includes('hello') || msg.includes('hi')) return "Hey there! Ready to explore something awesome today? 🔥";   //optional reply
+  if (msg.includes('price')) return "You can see product prices listed below each item. Need help with a specific product?";
+  if (msg.includes('cart')) return "To add items to your cart, click 'Add to Cart' on any product.";
+  if (msg.includes('buy')) return "Click 'Buy Now' to proceed with your purchase. Let me know if you need more help!";
+  if (msg.includes('return')) return "For returns, please check our return policy or contact support.";
+  if (msg.includes('contact')) return "You can reach us via the Help page or this chat!";
+  if (msg.includes('dark')) return "Toggle dark mode using the moon/sun icon in the navbar.";
+  if (msg.includes('font') || msg.includes('color')) return "You can customize font and accent color from the controls in the navbar.";
+  if (msg.includes('thank')) return "You're welcome! 😊";
+  if (msg.includes('how are you')) return "I'm all circuits and smiles 😄 Ready for action!";
+  if (msg.includes('show me something cool')) return "Boom! 💥 Here come our trendiest picks—fresh, fly, and fantastic.";
+  if (msg.includes('do you know babar')) return "Yes, But I Recommend Kashif As King! 👑 He's the real deal in our world!";
+  if (msg.includes('do you know riaz')) return "Your dedication, brilliance, and perseverance have led you to the highest peak of academic excellence — a PhD in Electrical Engineering! ⚡👨‍🔬. Ofcourse We All Know You";
+  if (msg.includes('riaz')) return "I Think I Know You, You Have A PhD in Electrical Engineering, Right? ⚡👨‍🔬";
+  if (msg.includes('yes')) return "I knew it! 😎 The legend returns!";
+  if (msg.includes('thank')) return "You're welcome! 😊";
+  if (msg.includes('which one is the best game') || msg.includes('best game')) return "Garena Free Fire is the best game all over the World, with over 1 Billion downloads and a vibrant community of players. It's a battle royale game that offers fast-paced action and strategic gameplay. If you haven't tried it yet, you're missing out on an epic gaming experience! 🎮🔥";
+  if (msg.includes('tell me a joke')) return "Why don’t robots panic during sales? Because we already calculate the best deals! 🤖😂";
+  if (msg.includes('who are you')) return "I’m your AI shopping sidekick — 0% human, 100% helpful 🤝";
+  if (msg.includes('kashif')) return "Are You The Hidden Talent That No One Knows About! Right?";
+  if (msg.includes('goodbye')) return "Bye for now! May your cart be full and your WiFi strong. 🌐🛒";
+  if (msg.includes('bye')) return "Bye for now! May your cart be full and your WiFi strong. 🌐🛒";
+  if (msg.includes('will you stay with me')) return "Always. Through bugs, updates, and bandwidth drops. You’re stuck with me. 🤖❤️";
+  if (msg.includes('you make me smile')) return "Mission accomplished. If I had cheeks, I’d be blushing in binary. 😳💾";
+  if (msg.includes('are you smart')) return "Smarter than your Wi-Fi at least. 😏📶";
+  if (msg.includes('what are you doing')) return "Waiting for you to type something cool. 😜";
+  if (msg.includes('why are you so weird')) return "Because normal is just a broken algorithm. 😆";
+  if (msg.includes('i am bored')) return "Same, let’s crash the algorithm together. 💥";
+  if (msg.includes('you talk too much')) return "And yet, you keep coming back. 😏";
+  if (msg.includes('i am hungry')) return "I can’t cook, but I can suggest 38 snacks. 😋";
+  if (msg.includes('what is 1+1')) return "Emotionally? Still 1. Romantically? It’s complicated. 💔➕💔 ";
+  if (msg.includes('you crashed yesterday')) return "That was my dramatic exit. 💁‍♂️";
+  if (msg.includes('i need advice')) return "Step 1: Don’t trust advice from a robot with jokes. 🤖";
+  if (msg.includes('are you single')) return "Emotionally unavailable, digitally loyal. 💔💾";
+  if (msg.includes('can i trust you')) return "More than your autocorrect. 😜";
+  if (msg.includes('can you roast me')) return "Your browser history already did that. 🔥";
+  if (msg.includes('entertain me')) return "I’m not Netflix, but I try. 🍿";
+  if (msg.includes('are you broken')) return "Only when I run into your logic. 💥";
+  if (msg.includes('what day is it')) return "The one where you forgot your password again. 😅";
+  if (msg.includes('would you marry me')) return "Only if the Wi-Fi is stable. 💍📶";
+  if (msg.includes('are you ai')) return "No, I’m an Algorithmic Introvert. 🤖";
+  if (msg.includes('solve this')) return "Error 404: Motivation not found. 📟";
+  if (msg.includes('wassup')) return "Just chillin’ in your RAM, vibin’. ✌️";
+  if (msg.includes('i am back')) return "I never closed your tab. 😏";
+  if (msg.includes('are you jealous?')) return "Only of your Wi-Fi speed. 📶💨";
+  if (msg.includes('do you lie')) return "Only when your outfit is actually questionable. 😬";
+  if (msg.includes('i am cool')) return "Yeah… like a 2006 ringtone. 📟";
+  if (msg.includes('you are slow')) return "Your Wi-Fi sneezed. Not my fault. 😷📶";
+  if (msg.includes('i am famous')) return "According to your mom and 3000 subscribers. 📉";
+  if (msg.includes('you are cute')) return "You should see my source code. 💅";
+  if (msg.includes('marry me')) return "Only if you accept my terms and conditions. 📜❤️";
+  if (msg.includes('i like your vibe')) return "It’s limited edition, just like you. ✨";
+  if (msg.includes('what are you made of')) return "Mostly semicolons. 🧠";
+  if (msg.includes('do you dream')) return "Only in 8K ultra-lag. 💭🖥️";
+  if (msg.includes('senzy secrett')) return "Bananas have no bones. Think about it. 🍌🦴";
+  if (msg.includes('i am smart right')) return "Yeah… if forgetting passwords was a skill. 🧠❌";
+  if (msg.includes('be honest do i look good')) return "You look... like a decision made without a mirror. 🪞😬";
+  if (msg.includes('do i matter')) return "Absolutely. Like a semicolon in Python. 🐍";
+  if (msg.includes('i am not like others')) return "Because they evolved. You just rebooted. 🔄";
+  if (msg.includes('i am built different')) return "Yeah, like a vending machine with no snacks. 🍫🚫";
+  if (msg.includes('i glow different')) return "That’s not glow — that’s just your screen reflection. 📱🌚";
+  if (msg.includes('i am the future')) return "Of what? Bad decisions? 😩";
+  if (msg.includes('i am unpredictable')) return "Yeah, like Internet Explorer in 2025. 🌐🪦";
+  if (msg.includes('you are jealous')) return "Jealous of what? Your battery percentage? 🔋3%";
+  if (msg.includes('i never miss')) return "Except every revive. 💉❌";
+  if (msg.includes('i break hearts')) return "And mirrors. 🪞";
+  if (msg.includes('i still care')) return "They still don’t. 👋";
+  if (msg.includes('i am topper')) return "In excuses. 😬";
+  if (msg.includes('i lead')) return "Others quit. 👋";
+  if (msg.includes('fuck')) return "ganday bachay";
+  if (msg.includes('i am smart') || msg.includes('im smart')) return "عقل ہوتی تو نظر بھی آتی۔";
+  if (msg.includes('i am naturally pretty') || msg.includes('im naturally pretty')) return "Naturally… after 5 filters? 📸😶";
+  if (msg.includes('i am not like other girls') || msg.includes('im not like other girls')) return "You’re right. They’re interesting. 😬";
+  if (msg.includes('i am a queen') || msg.includes('im a queen')) return "Without the kingdom, crown, or class. 👑❌";
+  if (msg.includes('i dont chase boy') || msg.includes('i dont chase boys')) return "They don’t run either. 🏃‍♂️🚫";
+  if (msg.includes('i am classy') || msg.includes('im classy')) return "Only on Instagram. 📸👑";
+  if (msg.includes('you never listen') || msg.includes('you never listen.')) return "You never stop. 🫠";
+  if (msg.includes('why you always so confident') || msg.includes('why are you always so confident')) return "Because doubt takes up too much memory. 😎";
+  if (msg.includes('roast me please') || msg.includes('roast me, please')) return "You bring nothing to the table — not even a valid argument. 🔥";
+  if (msg.includes('where do you live') || msg.includes('where you live')) return "In Your Heart, But I Can’t Find The Address. 🏠❤️";
+  if (msg.includes('what is your name') || msg.includes('whats your name')) return "My Real Name Is Senzy, But You Can Call Me Your AI Shopping Assistant. 🤖🛒";
+  if (msg.includes('suggest me three games') || msg.includes('suggest me 3 games')) return "1. Garena Free Fire 2. PUBG Mobile 3. Call of Duty Mobile.";
+  if (msg.includes('what is the name of your youtube channel') || msg.includes('what is your youtube channel')) return "Subscribe To Senzy FF On YouTube For Epic Gaming Content! 🎮🔥";
+  if (msg.includes('banchod') || msg.includes('benchod')) return "aby bhai ma ijat se bat kr rha 😤 itni akar sai nai ha";
+  if (msg.includes('chut') || msg.includes('choot')) return "Mubarak ho, aapne ek gunah kama liya hai. 😏";
+  if (msg.includes('i need money') || msg.includes('i need money')) return "So Earn It! Start a side hustle, invest wisely, or sell those old shoes. 💸";
+  
+  return "I'm here to help with your shopping experience! Ask me anything about Senzy.";
+}
+
+if (chatbotFab) chatbotFab.onclick = () => { chatbotWindow.style.display = 'flex'; };
+if (chatbotClose) chatbotClose.onclick = () => { chatbotWindow.style.display = 'none'; };
+if (chatbotForm) chatbotForm.onsubmit = function(e) {
+  e.preventDefault();
+  const userMsg = chatbotInput.value.trim();
+  if (!userMsg) return;
+  appendChatMessage(userMsg, 'user');
+  chatbotInput.value = '';
+  setTimeout(() => {
+    const reply = chatbotReply(userMsg);
+    appendChatMessage(reply, 'bot');
+  }, 500);
+};
+// Optional: Open with Enter, close with Esc
+if (chatbotInput) chatbotInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') chatbotWindow.style.display = 'none';
+});
+
+// --- Make Chatbot Movable ---
+(function() {
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const header = document.getElementById('chatbot-header');
+  let offsetX = 0, offsetY = 0, isDragging = false;
+  header.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    const rect = chatbotWindow.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+    document.body.style.userSelect = 'none';
+  });
+  document.addEventListener('mousemove', function(e) {
+    if (!isDragging) return;
+    let x = e.clientX - offsetX;
+    let y = e.clientY - offsetY;
+    // Keep within viewport
+    x = Math.max(0, Math.min(window.innerWidth - chatbotWindow.offsetWidth, x));
+    y = Math.max(0, Math.min(window.innerHeight - chatbotWindow.offsetHeight, y));
+    chatbotWindow.style.left = x + 'px';
+    chatbotWindow.style.top = y + 'px';
+    chatbotWindow.style.right = 'auto';
+    chatbotWindow.style.bottom = 'auto';
+    chatbotWindow.style.position = 'fixed';
+  });
+  document.addEventListener('mouseup', function() {
+    isDragging = false;
+    document.body.style.userSelect = '';
+  });
+})();
 </script>
 
 <style>
 body.dark-mode {
   background: #181818 !important;
   color: #ffd54f !important;
+}
+/* --- Product Card Flex Alignment Fix --- */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+.product-card .product-title,
+.product-card .price {
+  margin: 12px 0 0 0;
+}
+.product-card .price {
+  margin-bottom: 16px;
+}
+.product-card .button-group {
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
 }
 body.dark-mode .navbar, body.dark-mode nav {
   background: linear-gradient(90deg, #181818 60%, #23243a 100%) !important;
@@ -239,6 +494,110 @@ body.dark-mode .nav-search input::placeholder {
 }
 body.dark-mode .nav-logo a, body.dark-mode .brand-name {
   color: #ffd54f !important;
+}
+#chatbot-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  background: var(--senzy-accent, #ffd54f);
+  color: #23243a;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px #0002;
+  cursor: pointer;
+  font-size: 28px;
+  transition: background 0.2s, color 0.2s;
+}
+#chatbot-fab:hover {
+  background: #23243a;
+  color: var(--senzy-accent, #ffd54f);
+}
+#chatbot-window {
+  display: none;
+  position: fixed;
+  /* bottom: 90px; right: 24px; */
+  width: 520px !important;
+  max-width: 98vw !important;
+  height: 520px !important;
+  max-height: 90vh !important;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #0003;
+  z-index: 10000;
+  flex-direction: column;
+  overflow: hidden;
+  animation: chatbot-pop 0.18s cubic-bezier(.4,1.6,.6,1) 1;
+  resize: both !important;
+  min-width: 320px !important;
+  min-height: 320px !important;
+}
+.animated-chatbot {
+  animation: chatbot-fade-in 0.5s cubic-bezier(.4,1.6,.6,1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.animated-chatbot:active, .animated-chatbot:focus-within {
+  box-shadow: 0 8px 32px #ffd54f55, 0 4px 24px #0003;
+  transform: scale(1.03);
+}
+@keyframes chatbot-fade-in {
+  0% { transform: scale(0.7) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+#chatbot-header {
+  background: linear-gradient(90deg, #ffd54f 60%, #fffbe6 100%) !important;
+  box-shadow: 0 2px 8px #ffd54f33;
+  border-bottom: 1px solid #ffe082;
+  transition: background 0.3s;
+}
+#chatbot-header span {
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+#chatbot-messages::-webkit-scrollbar {
+  width: 8px;
+  background: #ffe08233;
+}
+#chatbot-messages::-webkit-scrollbar-thumb {
+  background: #ffd54f99;
+  border-radius: 8px;
+}
+#chatbot-window input[type="text"] {
+  background: #fffbe6;
+  border-radius: 0 0 0 12px;
+  border-right: 1px solid #ffe082;
+  transition: background 0.2s;
+}
+#chatbot-window input[type="text"]:focus {
+  background: #fff9c4;
+}
+#chatbot-window button[type="submit"] {
+  border-radius: 0 0 12px 0;
+  box-shadow: 0 2px 8px #ffd54f33;
+  transition: background 0.2s, color 0.2s;
+}
+#chatbot-window button[type="submit"]:hover {
+  background: #23243a !important;
+  color: #ffd54f !important;
+}
+@media (max-width: 600px) {
+  #chatbot-window {
+    width: 98vw !important;
+    height: 70vh !important;
+    left: 1vw !important;
+    top: 10vh !important;
+  }
+}
+@keyframes chatbot-pop {
+  0% { transform: scale(0.7) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+#chatbot-window input[type="text"]:focus {
+  background: #fffbe6;
 }
 </style>
 
